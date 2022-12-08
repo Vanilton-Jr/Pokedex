@@ -1,0 +1,289 @@
+﻿@model Pokemon.Models.Pokedex
+
+@{
+    ViewData["Title"] = "Dados Pokemon";
+}
+
+<div class="pk-content" id="details">
+
+    <!--  conteudo -->
+    <div class=" body-fantasma ">
+        <!--  _________________________________________________________________________________________________________________________ -->
+        <!--  -------------------------------------------------parte de cima----------------------------------------------------------- -->
+        <div class="cima">
+            <!--  plano de fundo  -->
+            <div class="plano-efeito plano-efeito-fantasma" id="fundo"> </div>
+            <!--  _________________________________________________________________________________________________________________________ -->
+            <!-- ---------------------------------------------------- sprites--------------------------------------------------------------  -->
+
+
+            <div class="img-dtls default-img">
+                @* ------------  default ------------*@
+                @{
+                    try
+                    {
+                        var base64 = Convert.ToBase64String(Model.Default);
+                        if (!string.IsNullOrEmpty(base64))
+                        {
+                            var imgSrc = String.Format("data:image/png;base64,{0}", base64);
+                            <img src="@imgSrc" width="300" class="foto-painel" />
+                        }
+                    }
+                    catch
+                    {
+                        <img class="img-fluid" src="http://www.puspfc.usp.br/sistemas/prefeitura/imgs/sem_foto.png" width="150" />
+                    }
+                }
+
+            </div>
+            @* ------------  Shiny ------------*@
+            <div class="img-dtls shiny-img">
+                @try
+                {
+                    var base64 = Convert.ToBase64String(@Model.Shiny);
+                    if (!string.IsNullOrEmpty(base64))
+                    {
+                        var img = String.Format("data:image/png;base64,{0}", base64);
+                        <img class="foto-painel" src="@img" style="max-width: 100%;" />
+                    }
+                }
+                catch
+                {
+                    <img class="foto-painel" src="~/assets/img/outros/notfound.png" width="100" />
+                }
+            </div>
+
+            @* ------------  mega ------------*@
+            <div class="img-dtls mega-img">
+                @{
+                    try
+                    {
+                        var base64 = Convert.ToBase64String(Model.mega);
+                        if (!string.IsNullOrEmpty(base64))
+                        {
+                            var imgSrc = String.Format("data:image/png;base64,{0}", base64);
+                            <img src="@imgSrc" width="300" class="foto-painel" />
+                        }
+                    }
+                    catch
+                    {
+                        <img class="foto-painel" src="~/assets/img/outros/notfound.png" width="100" />
+                    }
+                }
+
+            </div>
+
+            <!--  The control frame. The frame will be centered in the stage. -->
+            <div id="layer-bts-detalhes">
+                <div class="dropdown">
+                    <button class="dropbtn dropbtn-dtls "><img src="~/assets/img/outros/default.png" alt="" id="btn-btns" class="fbtn fbtn-default"></button>
+                    <div class="fwbts fwbts-dtls ">
+                        <a id="default"><img src="~/assets/img/outros/default.png" class="fbtns fbtn-default"></a>
+                        <a id="shiny">  <img src="~/assets/img/outros/shiny.png" class="fbtns fbtn-mega"></a>
+                        <a id="mega">   <img src="~/assets/img/outros/mega.png" class="fbtns fbtn-mega"></a>
+                    </div>
+                </div>
+            </div>
+
+            <!--  --------NOME------------ -->
+            <div class="titulo"><input asp-for="Nome" class="titulo-dtls" readonly /></div>
+            <!--  --------tipos------------ -->
+            <input class="tipo-pg tipo1-dtls  tipo1-crt tipo-fantasma" asp-for="Tipo1" id="Tipo1" readonly />  <input asp-for="Tipo2" class="tipo-pg tipo2-dtls tipo-venenoso" id="Tipo2" readonly />
+
+            <p class="num-dtls"><i class="fa fa-regular fa-angle-right"></i><input asp-for="num" class="num-size" readonly /><i class="fa fa-regular fa-angle-left"></i></p>
+        </div>
+
+        <div class="separador separador-fantasma"></div>
+
+        <!--  _________________________________________________________________________________________________________________________ -->
+        <!-- ---------------------------------------------------- Parte Inferior------------------------------------------------------- -->
+        <div class="carac carac-dtls sp-fantasma">
+            <div class="sp">
+                <input asp-for="sp" class="spResposta" readonly />
+                <p class="spPergunta">Espécie</p>
+
+                <div class="row">
+                    <span asp-validation-for="sp" class="col-md-12 text-danger"></span>
+                </div>
+            </div>
+
+            <div class="sp">
+                <input asp-for="altura" class="spResposta" readonly />
+                <p class="spPergunta">Altura</p>
+
+                <div class="row">
+                    <span asp-validation-for="altura" class="col-md-12 text-danger"></span>
+                </div>
+            </div>
+
+            <div class="sp">
+                <input asp-for="Peso" class="spResposta" readonly />
+                <p class="spPergunta">Peso</p>
+
+                <div class="row">
+                    <span asp-validation-for="Peso" class="col-md-12 text-danger"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="separador sep2"></div>
+
+        <!--  --------Descrição da Pokedex------------ -->
+
+        <div class="description-area-dtls">
+            <label asp-for="Descr"></label>
+            <input asp-for="Descr" class="description-crt" readonly />
+            <span asp-validation-for="Descr" class="text-danger"></span>
+        </div>
+
+        <div class="separador sep3"></div>
+
+        <!--  --------Informações de Batalha------------ -->
+        <div class="col-lg-6 status-batalha">
+            <div class="card">
+                <div class="card-body">
+
+                    <!-- Radar Chart -->
+                    <canvas id="radarChart" style="max-height: 400px;"></canvas>
+                    <script>
+                          const hp = @Model.hp;
+                          const atk = @Model.atk;
+                          const dfs = @Model.dfs;
+                          const atkE = @Model.atkE;
+                          const dfsE = @Model.dfsE;
+                          const vel = @Model.vel;
+
+                        document.addEventListener("DOMContentLoaded", () => {
+                          new Chart(document.querySelector('#radarChart'), {
+                            type: 'radar',
+                            data: {
+                              labels: [
+                                'HP',
+                                'Ataque',
+                                'Defesa',
+                                'Ataque Especial',
+                                'Defesa Especial',
+                                'Velocidade'
+                              ],
+                              datasets: [{
+                                label: 'Status de Batalha',
+                                data: [hp,atk, dfs, atkE, dfsE, vel],
+                                fill: true,
+                                backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                                borderColor: 'rgb(255, 99, 132)',
+                                pointBackgroundColor: 'rgb(255, 99, 132)',
+                                pointBorderColor: '#fff',
+                                pointHoverBackgroundColor: '#fff',
+                                pointHoverBorderColor: 'rgb(255, 99, 132)'
+                              }]
+                            },
+                            options: {
+                              elements: {
+                                line: {
+                                  borderWidth: 3
+                                }
+                              }
+                            }
+                          });
+                        });
+
+                    </script>
+                </div>
+            </div>
+        </div>
+        <!-- End Radar CHart -->
+        <div class="battle-info-area">
+            <!--Base info-->
+            <div class="base-info-area-dtls">
+                <h4 class="status-title">Status</h4>
+                <div class="base-info">
+                    <label asp-for="hp" class="base-label"></label>
+                    <input id="hp" asp-for="hp" class="base-input" /><br />
+                    <span asp-validation-for="hp" class="text-danger"></span>
+                </div>
+                <div class="base-info">
+                    <label asp-for="vel" class="base-label"></label>
+                    <input asp-for="vel" class="base-input" /><br />
+                    <span asp-validation-for="vel" class="text-danger"></span>
+                </div>
+                <div class="base-info">
+                    <label asp-for="atk" class="base-label"></label>
+                    <input asp-for="atk" class="base-input" /><br />
+                    <span asp-validation-for="atk" class="text-danger"></span>
+                </div>
+                <div class="base-info">
+                    <label asp-for="dfs" class="base-label"></label>
+                    <input asp-for="dfs" class="base-input" /><br />
+                    <span asp-validation-for="dfs" class="text-danger"></span>
+                </div>
+                <div class="base-info">
+                    <label asp-for="atkE" class="base-label"></label>
+                    <input asp-for="atkE" class="base-input" /><br />
+                    <span asp-validation-for="atkE" class="text-danger"></span>
+                </div>
+                <div class="base-info">
+                    <label asp-for="dfsE" class="base-label"></label>
+                    <input asp-for="dfsE" class="base-input" /><br />
+                    <span asp-validation-for="dfsE" class="text-danger"></span>
+                </div>
+            </div>
+
+            <!--Moves-->
+            <h4 onclick="moves()" class="move-title move-title-dtls">Movimetos</h4><h4 class="titu-separador ">|</h4><h4 onclick="efetividade()" class="efetividade-title ">Efetividade</h4>
+            <div class="move-area-dtls">
+                <div class="move">
+                    <label asp-for="move1"></label>
+                    <input asp-for="move1" class="move-input" readonly />
+                    <span asp-validation-for="move1" class="text-danger"></span>
+                </div>
+                <div class="move">
+                    <label asp-for="move2"></label>
+                    <input asp-for="move2" class="move-input" readonly />
+                    <span asp-validation-for="move2" class="text-danger"></span>
+                </div>
+                <div class="move move-baixo">
+                    <label asp-for="move3"></label>
+                    <input asp-for="move3" class="move-input" readonly />
+                    <span asp-validation-for="move3" class="text-danger"></span>
+                </div>
+                <div class="move move-baixo">
+                    <label asp-for="move4"></label>
+                    <input asp-for="move4" class="move-input" readonly />
+                    <span asp-validation-for="move4" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="efetividade-area-dtls">
+                <h5>Vantagem</h5>
+                <img class="poke-logotipo" id="van1" src="~/assets/img/pokelogos/PKL-psiquico.png" /> <img class="poke-logotipo" id="van2" src="~/assets/img/pokelogos/PKL-fanta.png" /><img class="poke-logotipo" id="van3" src="" /><img class="poke-logotipo" id="van4" src="" /><img class="poke-logotipo" id="van5" src="" />
+                <br>
+
+                <hr />
+
+                <h5>Desvantagem</h5>
+                <img class="poke-logotipo" id="desvan1" src="~/assets/img/pokelogos/PKL-sombrio.png" /> <img class="poke-logotipo" id="desvan2" src="~/assets/img/pokelogos/PKL-fanta.png" /><img class="poke-logotipo" id="desvan3" src="" /><img class="poke-logotipo" id="desvan4" src="" /><img class="poke-logotipo" id="desvan5" src="" />
+            </div>
+        </div>
+
+        <!--  _________________________________________________________________________________________________________________________ -->
+        <!-- ---------------------------------------------------- Botões ------------------------------------------------------- -->
+        <div class="form-group menu-float">
+
+            <button asp-action="Edit type="submit" class="btn btn-dark btn-icon-split btn-outline-primary iedt" asp-route-id="@Model.Id">
+                <a asp-action="Edit" asp-route-id="@Model.Id" class="text text-white editar">Editar</a>
+                <a asp-action="Edit" asp-route-id="@Model.Id" class="icon text-white ">
+                    <i class="fas fa-pen "></i>
+                </a>
+            </button> <br />
+
+            <button asp-action="Index" type="submit" class="btn btn-dark btn-icon-split btn-outline-secondary ivlt">
+                <a asp-action="Index" class="text text-white voltar">Voltar</a>
+                <span class="icon text-white">
+                    <i class="fa fa-solid fa-arrow-left"></i>
+                </span>
+            </button>
+
+            <img src="~/assets/img/pokelogos/pokebola-aberta.png" class="abrir-menu" />
+        </div>
+    </div>
+</div>

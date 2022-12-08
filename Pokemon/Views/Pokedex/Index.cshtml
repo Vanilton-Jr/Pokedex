@@ -1,0 +1,2185 @@
+﻿@model IEnumerable<Pokemon.Models.Pokedex>
+
+@{
+    ViewData["Title"] = "Home";
+}
+
+<div class="pk-content index">
+
+    @foreach (var item in Model)
+    {
+        if (item.Tipo1 == "FANTASMA")
+        {
+            <a class="a-pokemon" asp-action="Details" asp-route-id="@item.Id">
+                <div class="borda">
+                    <div class="poke-card pokemon-fantasma">
+                        @*plano de fundo*@
+                        <div class="efeito efeito-fantasma"></div>
+
+                        @*imagens*@
+                        @try
+                        {
+                            var base64 = Convert.ToBase64String(@item.Default);
+                            if (!string.IsNullOrEmpty(base64))
+                            {
+                                var img = String.Format("data:image/png;base64,{0}", base64);
+                                <img class="foto" src="@img" style="max-width: 100%;" />
+                            }
+                        }
+                        catch
+                        {
+                            <img class="foto" src="~/assets/img/outros/notfound.png" width="100" />
+                        }
+
+                        <hr class="poke-hr hr-l hr-fantasma"> <hr class="poke-hr hr-r hr-fantasma">
+                        @*nome*@
+                        <p class="nome"> @Html.DisplayFor(modelItem => item.Nome)</p>
+
+                        @*tipos*@
+                        @{
+
+
+                            if (item.Tipo2 == "NENHUM")
+                            {
+                                <p class="tipo tipo3 tipo-fantasma"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-fanta.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-nenhum"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "FANTASMA")
+                            {
+                                <p class="tipo tipo1 tipo-fantasma"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-fanta.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-fantasma"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "VENENOSO")
+                            {
+                                <p class="tipo tipo1 tipo-fantasma"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-fanta.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-venenoso" id="tipo2"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "FOGO")
+                            {
+                                <p class="tipo tipo1 tipo-fantasma"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-fanta.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-fogo"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "ELÉTRICO")
+                            {
+                                <p class="tipo tipo1 tipo-fantasma"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-fanta.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-eletrico"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "SOMBRIO")
+                            {
+                                <p class="tipo tipo1 tipo-fantasma"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-fanta.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-sombrio"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "GELO")
+                            {
+                                <p class="tipo tipo1 tipo-fantasma"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-fanta.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-gelo"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "PLANTA")
+                            {
+                                <p class="tipo tipo1 tipo-fantasma"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-fanta.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-planta"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "PEDRA")
+                            {
+                                <p class="tipo tipo1 tipo-fantasma"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-fanta.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-pedra"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "SOLO")
+                            {
+                                <p class="tipo tipo1 tipo-fantasma"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-fanta.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-solo"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "LUTADOR")
+                            {
+                                <p class="tipo tipo1 tipo-fantasma"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-fanta.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-lutador"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "DRAGÃO")
+                            {
+                                <p class="tipo tipo1 tipo-fantasma"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-fanta.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-dragon"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "INSETO")
+                            {
+                                <p class="tipo tipo1 tipo-fantasma"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-fanta.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-inseto"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "PSÍQUICO")
+                            {
+                                <p class="tipo tipo1 tipo-fantasma"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-fanta.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-psiquico"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "VOADOR")
+                            {
+                                <p class="tipo tipo1 tipo-fantasma"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-fanta.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-voador"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "ÁGUA")
+                            {
+                                <p class="tipo tipo1 tipo-fantasma"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-fanta.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-agua"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "FOGO")
+                            {
+                                <p class="tipo tipo1 tipo-fantasma"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-fanta.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-fogo"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "NORMAL")
+                            {
+                                <p class="tipo tipo1 tipo-fantasma"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-fanta.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-normal"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+
+
+
+                            if (item.Tipo2 == "NENHUM")
+                            {
+                                <p class="num num-3"><i class="fa fa-regular fa-angle-right"></i> @Html.DisplayFor(modelItem => item.num) <i class="fa fa-regular fa-angle-left"></i></p>
+                            }
+                            else
+                            {
+                                <p class="num "><i class="fa fa-regular fa-angle-right"></i> @Html.DisplayFor(modelItem => item.num) <i class="fa fa-regular fa-angle-left"></i></p>
+                            }
+
+
+                        }
+                    </div>
+                </div>
+            </a>
+        }
+
+        else if (item.Tipo1 == "ELÉTRICO")
+        {
+            <a class="a-pokemon" asp-action="Details" asp-route-id="@item.Id">
+                <div class="borda">
+                    <div class="poke-card pokemon-eletrico">
+                        @*plano de fundo*@
+                        <div class="efeito efeito-eletrico"></div>
+
+                        @*imagens*@
+                        @try
+                        {
+                            var base64 = Convert.ToBase64String(@item.Default);
+                            if (!string.IsNullOrEmpty(base64))
+                            {
+                                var img = String.Format("data:image/png;base64,{0}", base64);
+                                <img class="foto" src="@img" style="max-width: 100%;" />
+                            }
+                        }
+                        catch
+                        {
+                            <img class="foto" src="~/assets/img/outros/notfound.png" width="100" />
+                        }
+
+                        <hr class="poke-hr hr-l hr-eletrico"> <hr class="poke-hr hr-r hr-eletrico">
+                        @*nome*@
+                        <p class="nome"> @Html.DisplayFor(modelItem => item.Nome)</p>
+                        @*tipos*@
+                        @{
+
+
+                            if (item.Tipo2 == "NENHUM")
+                            {
+                                <p class="tipo tipo3 tipo-eletrico"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-eletricopng" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-nenhum"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "FANTASMA")
+                            {
+                                <p class="tipo tipo1 tipo-eletrico"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-eletrico.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-fantasma"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "VENENOSO")
+                            {
+                                <p class="tipo tipo1 tipo-eletrico"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-eletrico.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-venenoso" id="tipo2"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "FOGO")
+                            {
+                                <p class="tipo tipo1 tipo-eletrico"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-eletrico.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-fogo"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "ELÉTRICO")
+                            {
+                                <p class="tipo tipo1 tipo-eletrico"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-eletrico.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-eletrico"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "SOMBRIO")
+                            {
+                                <p class="tipo tipo1 tipo-eletrico"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-eletrico.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-sombrio"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "GELO")
+                            {
+                                <p class="tipo tipo1 tipo-eletrico"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-eletrico.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-gelo"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "PLANTA")
+                            {
+                                <p class="tipo tipo1 tipo-eletrico"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-eletrico.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-planta"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "PEDRA")
+                            {
+                                <p class="tipo tipo1 tipo-eletrico"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-eletrico.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-pedra"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "SOLO")
+                            {
+                                <p class="tipo tipo1 tipo-eletrico"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-eletrico.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-solo"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "LUTADOR")
+                            {
+                                <p class="tipo tipo1 tipo-eletrico"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-eletrico.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-lutador"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "DRAGÃO")
+                            {
+                                <p class="tipo tipo1 tipo-eletrico"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-eletrico.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-dragon"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "INSETO")
+                            {
+                                <p class="tipo tipo1 tipo-eletrico"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-eletrico.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-inseto"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "PSÍQUICO")
+                            {
+                                <p class="tipo tipo1 tipo-eletrico"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-eletrico.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-psiquico"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "VOADOR")
+                            {
+                                <p class="tipo tipo1 tipo-eletrico"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-eletrico.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-voador"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "ÁGUA")
+                            {
+                                <p class="tipo tipo1 tipo-eletrico"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-eletrico.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-agua"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "FOGO")
+                            {
+                                <p class="tipo tipo1 tipo-eletrico"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-eletrico.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-fogo"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "NORMAL")
+                            {
+                                <p class="tipo tipo1 tipo-eletrico"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-eletrico.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-normal"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+
+
+
+                            if (item.Tipo2 == "NENHUM")
+                            {
+                                <p class="num num-3"><i class="fa fa-regular fa-angle-right"></i> @Html.DisplayFor(modelItem => item.num) <i class="fa fa-regular fa-angle-left"></i></p>
+                            }
+                            else
+                            {
+                                <p class="num "><i class="fa fa-regular fa-angle-right"></i> @Html.DisplayFor(modelItem => item.num) <i class="fa fa-regular fa-angle-left"></i></p>
+                            }
+
+
+                        }
+                    </div>
+                </div>
+            </a>
+        }
+        else if (item.Tipo1 == "FOGO")
+        {
+            <a class="a-pokemon" asp-action="Details" asp-route-id="@item.Id">
+                <div class="borda">
+                    <div class="poke-card pokemon-fogo">
+                        @*plano de fundo*@
+                        <div class="efeito efeito-fogo"></div>
+
+                        @*imagens*@
+                        @{
+                            try
+                            {
+                                var base64 = Convert.ToBase64String(@item.Default);
+                                if (!string.IsNullOrEmpty(base64))
+                                {
+                                    var img = String.Format("data:image/png;base64,{0}", base64);
+                                    <img class="foto" src="@img" width="100" />
+                                }
+                            }
+                            catch
+                            {
+                                <img class="foto" src="~/assets/img/outros/notfound.png" width="100" />
+                            }
+                        }
+
+                        <hr class="poke-hr hr-l hr-fogo"> <hr class="poke-hr hr-r hr-fogo">
+                        @*nome*@
+                        <p class="nome"> @Html.DisplayFor(modelItem => item.Nome)</p>
+
+                         @*tipos*@
+                        @{
+
+                            
+                            if (item.Tipo2 == "NENHUM")
+                            {
+                               <p class="tipo tipo3 tipo-fogo"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                               <img src="assets/img/pokelogos/PKL-fogo.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-nenhum"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "FANTASMA")
+                            {
+                                <p class="tipo tipo1 tipo-fogo"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-fogo.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-fantasma"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "VENENOSO")
+                            {
+                                <p class="tipo tipo1 tipo-fogo"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-fogo.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-venenoso" id="tipo2"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "FOGO")
+                            {
+                                <p class="tipo tipo1 tipo-fogo"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-fogo.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-fogo"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "ELÉTRICO")
+                            {
+                                <p class="tipo tipo1 tipo-fogo"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-fogo.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-eletrico"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "SOMBRIO")
+                            {
+                                <p class="tipo tipo1 tipo-fogo"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-fogo.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-sombrio"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "GELO")
+                            {
+                                <p class="tipo tipo1 tipo-fogo"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-fogo.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-gelo"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "PLANTA")
+                            {
+                                <p class="tipo tipo1 tipo-fogo"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-fogo.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-planta"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "PEDRA")
+                            {
+                                <p class="tipo tipo1 tipo-fogo"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-fogo.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-pedra"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "SOLO")
+                            {
+                                <p class="tipo tipo1 tipo-fogo"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-fogo.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-solo"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "LUTADOR")
+                            {
+                                <p class="tipo tipo1 tipo-fogo"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-fogo.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-lutador"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "DRAGÃO")
+                            {
+                                <p class="tipo tipo1 tipo-fogo"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-fogo.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-dragon"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "INSETO")
+                            {
+                                <p class="tipo tipo1 tipo-fogo"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-fogo.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-inseto"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "PSÍQUICO")
+                            {
+                                <p class="tipo tipo1 tipo-fogo"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-fogo.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-psiquico"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "VOADOR")
+                            {
+                                <p class="tipo tipo1 tipo-fogo"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-fogo.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-voador"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "ÁGUA")
+                            {
+                                <p class="tipo tipo1 tipo-fogo"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-fogo.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-agua"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "FOGO")
+                            {
+                                <p class="tipo tipo1 tipo-fogo"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-fogo.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-fogo"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "NORMAL")
+                            {
+                                <p class="tipo tipo1 tipo-fogo"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-fogo.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-normal"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+
+
+
+                            if(item.Tipo2 == "NENHUM")
+                            {
+                                <p class="num num-3"><i class="fa fa-regular fa-angle-right"></i> @Html.DisplayFor(modelItem => item.num) <i class="fa fa-regular fa-angle-left"></i></p> 
+                            }
+                            else{
+                                <p class="num "><i class="fa fa-regular fa-angle-right"></i> @Html.DisplayFor(modelItem => item.num) <i class="fa fa-regular fa-angle-left"></i></p>    
+                                }       
+                    }
+                    </div>
+                </div>
+            </a>
+        }
+        else if (item.Tipo1 == "GELO")
+        {
+            <a class="a-pokemon" asp-action="Details" asp-route-id="@item.Id">
+                <div class="borda">
+                    <div class="poke-card pokemon-gelo">
+                        @*plano de fundo*@
+                        <div class="efeito efeito-gelo"></div>
+
+                        @*imagens*@
+                        @try
+                        {
+                            var base64 = Convert.ToBase64String(@item.Default);
+                            if (!string.IsNullOrEmpty(base64))
+                            {
+                                var img = String.Format("data:image/png;base64,{0}", base64);
+                                <img class="foto" src="@img" style="max-width: 100%;" />
+                            }
+                        }
+                        catch
+                        {
+                            <img class="foto" src="~/assets/img/outros/notfound.png" width="100" />
+                        }
+
+                        <hr class="poke-hr hr-l hr-gelo"> <hr class="poke-hr hr-r hr-gelo">
+                        @*nome*@
+                        <p class="nome"> @Html.DisplayFor(modelItem => item.Nome)</p>
+
+                        @*tipos*@
+                        @{
+
+                            
+                            if (item.Tipo2 == "NENHUM")
+                            {
+                               <p class="tipo tipo3 tipo-gelo"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                               <img src="assets/img/pokelogos/PKL-gelo.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-nenhum"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "FANTASMA")
+                            {
+                                <p class="tipo tipo1 tipo-gelo"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-gelo.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-fantasma"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "VENENOSO")
+                            {
+                                <p class="tipo tipo1 tipo-gelo"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-gelo.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-venenoso" id="tipo2"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "FOGO")
+                            {
+                                <p class="tipo tipo1 tipo-gelo"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-gelo.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-fogo"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "ELÉTRICO")
+                            {
+                                <p class="tipo tipo1 tipo-gelo"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-gelo.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-eletrico"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "SOMBRIO")
+                            {
+                                <p class="tipo tipo1 tipo-gelo"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-gelo.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-sombrio"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "GELO")
+                            {
+                                <p class="tipo tipo1 tipo-gelo"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-gelo.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-gelo"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "PLANTA")
+                            {
+                                <p class="tipo tipo1 tipo-gelo"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-gelo.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-planta"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "PEDRA")
+                            {
+                                <p class="tipo tipo1 tipo-gelo"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-gelo.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-pedra"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "SOLO")
+                            {
+                                <p class="tipo tipo1 tipo-gelo"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-gelo.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-solo"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "LUTADOR")
+                            {
+                                <p class="tipo tipo1 tipo-gelo"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-gelo.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-lutador"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "DRAGÃO")
+                            {
+                                <p class="tipo tipo1 tipo-gelo"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-gelo.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-dragon"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "INSETO")
+                            {
+                                <p class="tipo tipo1 tipo-gelo"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-gelo.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-inseto"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "PSÍQUICO")
+                            {
+                                <p class="tipo tipo1 tipo-gelo"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-gelo.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-psiquico"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "VOADOR")
+                            {
+                                <p class="tipo tipo1 tipo-gelo"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-gelo.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-voador"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "ÁGUA")
+                            {
+                                <p class="tipo tipo1 tipo-gelo"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-gelo.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-agua"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "FOGO")
+                            {
+                                <p class="tipo tipo1 tipo-gelo"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-gelo.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-gelo"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "NORMAL")
+                            {
+                                <p class="tipo tipo1 tipo-gelo"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-gelo.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-normal"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+
+
+
+                            if(item.Tipo2 == "NENHUM")
+                            {
+                                <p class="num num-3"><i class="fa fa-regular fa-angle-right"></i> @Html.DisplayFor(modelItem => item.num) <i class="fa fa-regular fa-angle-left"></i></p> 
+                            }
+                            else{
+                                <p class="num "><i class="fa fa-regular fa-angle-right"></i> @Html.DisplayFor(modelItem => item.num) <i class="fa fa-regular fa-angle-left"></i></p>    
+                                }       
+                    }
+                    </div>
+                </div>
+            </a>
+        }
+        else if (item.Tipo1 == "PEDRA")
+        {
+            <a class="a-pokemon" asp-action="Details" asp-route-id="@item.Id">
+                <div class="borda">
+                    <div class="poke-card pokemon-pedra">
+                        @*plano de fundo*@
+                        <div class="efeito efeito-pedra"></div>
+
+                        @*imagens*@
+                        @try
+                        {
+                            var base64 = Convert.ToBase64String(@item.Default);
+                            if (!string.IsNullOrEmpty(base64))
+                            {
+                                var img = String.Format("data:image/png;base64,{0}", base64);
+                                <img class="foto" src="@img" style="max-width: 100%;" />
+                            }
+                        }
+                        catch
+                        {
+                            <img class="foto" src="~/assets/img/outros/notfound.png" width="100" />
+                        }
+
+                        <hr class="poke-hr hr-l hr-pedra"> <hr class="poke-hr hr-r hr-pedra">
+                        @*nome*@
+                        <p class="nome"> @Html.DisplayFor(modelItem => item.Nome)</p>
+@*tipos*@
+                        @{
+
+                            
+                            if (item.Tipo2 == "NENHUM")
+                            {
+                               <p class="tipo tipo3 tipo-pedra"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                               <img src="assets/img/pokelogos/PKL-pedra.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-nenhum"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "FANTASMA")
+                            {
+                                <p class="tipo tipo1 tipo-pedra"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-pedra.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-fantasma"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "VENENOSO")
+                            {
+                                <p class="tipo tipo1 tipo-pedra"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-pedra.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-venenoso" id="tipo2"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "FOGO")
+                            {
+                                <p class="tipo tipo1 tipo-pedra"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-pedra.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-fogo"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "ELÉTRICO")
+                            {
+                                <p class="tipo tipo1 tipo-pedra"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-pedra.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-eletrico"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "SOMBRIO")
+                            {
+                                <p class="tipo tipo1 tipo-pedra"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-pedra.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-sombrio"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "GELO")
+                            {
+                                <p class="tipo tipo1 tipo-pedra"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-pedra.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-gelo"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "PLANTA")
+                            {
+                                <p class="tipo tipo1 tipo-pedra"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-pedra.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-planta"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "PEDRA")
+                            {
+                                <p class="tipo tipo1 tipo-pedra"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-pedra.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-pedra"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "SOLO")
+                            {
+                                <p class="tipo tipo1 tipo-pedra"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-pedra.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-solo"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "LUTADOR")
+                            {
+                                <p class="tipo tipo1 tipo-pedra"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-pedra.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-lutador"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "DRAGÃO")
+                            {
+                                <p class="tipo tipo1 tipo-pedra"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-pedra.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-dragon"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "INSETO")
+                            {
+                                <p class="tipo tipo1 tipo-pedra"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-pedra.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-inseto"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "PSÍQUICO")
+                            {
+                                <p class="tipo tipo1 tipo-pedra"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-pedra.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-psiquico"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "VOADOR")
+                            {
+                                <p class="tipo tipo1 tipo-pedra"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-pedra.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-voador"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "ÁGUA")
+                            {
+                                <p class="tipo tipo1 tipo-pedra"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-pedra.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-agua"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "FOGO")
+                            {
+                                <p class="tipo tipo1 tipo-pedra"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-pedra.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-pedra"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "NORMAL")
+                            {
+                                <p class="tipo tipo1 tipo-pedra"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-pedra.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-normal"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+
+
+
+                            if(item.Tipo2 == "NENHUM")
+                            {
+                                <p class="num num-3"><i class="fa fa-regular fa-angle-right"></i> @Html.DisplayFor(modelItem => item.num) <i class="fa fa-regular fa-angle-left"></i></p> 
+                            }
+                            else{
+                                <p class="num "><i class="fa fa-regular fa-angle-right"></i> @Html.DisplayFor(modelItem => item.num) <i class="fa fa-regular fa-angle-left"></i></p>    
+                                }       
+                    }
+                    </div>
+                </div>
+            </a>
+        }
+        else if (item.Tipo1 == "DRAGÃO")
+        {
+            <a class="a-pokemon" asp-action="Details" asp-route-id="@item.Id">
+                <div class="borda">
+                    <div class="poke-card pokemon-dragon">
+                        @*plano de fundo*@
+                        <div class="efeito efeito-dragon"></div>
+
+                        @*imagens*@
+                        @try
+                        {
+                            var base64 = Convert.ToBase64String(@item.Default);
+                            if (!string.IsNullOrEmpty(base64))
+                            {
+                                var img = String.Format("data:image/png;base64,{0}", base64);
+                                <img class="foto" src="@img" style="max-width: 100%;" />
+                            }
+                        }
+                        catch
+                        {
+                            <img class="foto" src="~/assets/img/outros/notfound.png" width="100" />
+                        }
+
+                        <hr class="poke-hr hr-l hr-dragon"> <hr class="poke-hr hr-r hr-dragon">
+                        @*nome*@
+                        <p class="nome"> @Html.DisplayFor(modelItem => item.Nome)</p>
+
+                        @*tipos*@
+                        @{
+
+                            
+                            if (item.Tipo2 == "NENHUM")
+                            {
+                               <p class="tipo tipo3 tipo-dragon"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                               <img src="assets/img/pokelogos/PKL-dragon.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-nenhum"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "FANTASMA")
+                            {
+                                <p class="tipo tipo1 tipo-dragon"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-dragon.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-fantasma"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "VENENOSO")
+                            {
+                                <p class="tipo tipo1 tipo-dragon"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-dragon.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-venenoso" id="tipo2"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "FOGO")
+                            {
+                                <p class="tipo tipo1 tipo-dragon"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-dragon.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-fogo"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "ELÉTRICO")
+                            {
+                                <p class="tipo tipo1 tipo-dragon"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-dragon.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-eletrico"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "SOMBRIO")
+                            {
+                                <p class="tipo tipo1 tipo-dragon"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-dragon.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-sombrio"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "GELO")
+                            {
+                                <p class="tipo tipo1 tipo-dragon"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-dragon.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-gelo"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "PLANTA")
+                            {
+                                <p class="tipo tipo1 tipo-dragon"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-dragon.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-planta"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "PEDRA")
+                            {
+                                <p class="tipo tipo1 tipo-dragon"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-dragon.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-pedra"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "SOLO")
+                            {
+                                <p class="tipo tipo1 tipo-dragon"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-dragon.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-solo"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "LUTADOR")
+                            {
+                                <p class="tipo tipo1 tipo-dragon"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-dragon.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-lutador"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "DRAGÃO")
+                            {
+                                <p class="tipo tipo1 tipo-dragon"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-dragon.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-dragon"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "INSETO")
+                            {
+                                <p class="tipo tipo1 tipo-dragon"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-dragon.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-inseto"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "PSÍQUICO")
+                            {
+                                <p class="tipo tipo1 tipo-dragon"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-dragon.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-psiquico"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "VOADOR")
+                            {
+                                <p class="tipo tipo1 tipo-dragon"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-dragon.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-voador"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "ÁGUA")
+                            {
+                                <p class="tipo tipo1 tipo-dragon"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-dragon.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-agua"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "FOGO")
+                            {
+                                <p class="tipo tipo1 tipo-dragon"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-dragon.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-dragon"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "NORMAL")
+                            {
+                                <p class="tipo tipo1 tipo-dragon"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-dragon.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-normal"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+
+
+
+                            if(item.Tipo2 == "NENHUM")
+                            {
+                                <p class="num num-3"><i class="fa fa-regular fa-angle-right"></i> @Html.DisplayFor(modelItem => item.num) <i class="fa fa-regular fa-angle-left"></i></p> 
+                            }
+                            else{
+                                <p class="num "><i class="fa fa-regular fa-angle-right"></i> @Html.DisplayFor(modelItem => item.num) <i class="fa fa-regular fa-angle-left"></i></p>    
+                                }       
+                    }
+                    </div>
+                </div>
+            </a>
+        }
+        else if (item.Tipo1 == "VENENOSO")
+        {
+            <a class="a-pokemon" asp-action="Details" asp-route-id="@item.Id">
+                <div class="borda">
+                    <div class="poke-card pokemon-venenoso">
+                        @*plano de fundo*@
+                        <div class="efeito efeito-venenoso"></div>
+
+                        @*imagens*@
+                        @try
+                        {
+                            var base64 = Convert.ToBase64String(@item.Default);
+                            if (!string.IsNullOrEmpty(base64))
+                            {
+                                var img = String.Format("data:image/png;base64,{0}", base64);
+                                <img class="foto" src="@img" style="max-width: 100%;" />
+                            }
+                        }
+                        catch
+                        {
+                            <img class="foto" src="~/assets/img/outros/notfound.png" width="100" />
+                        }
+
+                        <hr class="poke-hr hr-l hr-venenoso"> <hr class="poke-hr hr-r hr-venenoso">
+                        @*nome*@
+                        <p class="nome"> @Html.DisplayFor(modelItem => item.Nome)</p>
+
+                       @*tipos*@
+                        @{
+
+                            
+                            if (item.Tipo2 == "NENHUM")
+                            {
+                               <p class="tipo tipo3 tipo-venenoso"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                               <img src="assets/img/pokelogos/PKL-venenoso.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-nenhum"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "FANTASMA")
+                            {
+                                <p class="tipo tipo1 tipo-venenoso"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-venenoso.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-fantasma"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "VENENOSO")
+                            {
+                                <p class="tipo tipo1 tipo-venenoso"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-venenoso.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-venenoso" id="tipo2"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "FOGO")
+                            {
+                                <p class="tipo tipo1 tipo-venenoso"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-venenoso.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-fogo"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "ELÉTRICO")
+                            {
+                                <p class="tipo tipo1 tipo-venenoso"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-venenoso.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-eletrico"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "SOMBRIO")
+                            {
+                                <p class="tipo tipo1 tipo-venenoso"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-venenoso.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-sombrio"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "GELO")
+                            {
+                                <p class="tipo tipo1 tipo-venenoso"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-venenoso.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-gelo"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "PLANTA")
+                            {
+                                <p class="tipo tipo1 tipo-venenoso"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-venenoso.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-planta"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "PEDRA")
+                            {
+                                <p class="tipo tipo1 tipo-venenoso"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-venenoso.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-pedra"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "SOLO")
+                            {
+                                <p class="tipo tipo1 tipo-venenoso"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-venenoso.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-solo"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "LUTADOR")
+                            {
+                                <p class="tipo tipo1 tipo-venenoso"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-venenoso.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-lutador"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "DRAGÃO")
+                            {
+                                <p class="tipo tipo1 tipo-venenoso"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-venenoso.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-dragon"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "INSETO")
+                            {
+                                <p class="tipo tipo1 tipo-venenoso"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-venenoso.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-inseto"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "PSÍQUICO")
+                            {
+                                <p class="tipo tipo1 tipo-venenoso"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-venenoso.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-psiquico"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "VOADOR")
+                            {
+                                <p class="tipo tipo1 tipo-venenoso"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-venenoso.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-voador"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "ÁGUA")
+                            {
+                                <p class="tipo tipo1 tipo-venenoso"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-venenoso.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-agua"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "FOGO")
+                            {
+                                <p class="tipo tipo1 tipo-venenoso"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-venenoso.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-venenoso"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "NORMAL")
+                            {
+                                <p class="tipo tipo1 tipo-venenoso"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-venenoso.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-normal"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+
+
+
+                            if(item.Tipo2 == "NENHUM")
+                            {
+                                <p class="num num-3"><i class="fa fa-regular fa-angle-right"></i> @Html.DisplayFor(modelItem => item.num) <i class="fa fa-regular fa-angle-left"></i></p> 
+                            }
+                            else{
+                                <p class="num "><i class="fa fa-regular fa-angle-right"></i> @Html.DisplayFor(modelItem => item.num) <i class="fa fa-regular fa-angle-left"></i></p>    
+                                }       
+                    }
+                    </div>
+                </div>
+            </a>
+        }
+        else if (item.Tipo1 == "LUTADOR")
+        {
+            <a class="a-pokemon" asp-action="Details" asp-route-id="@item.Id">
+                <div class="borda">
+                    <div class="poke-card pokemon-lutador">
+                        @*plano de fundo*@
+                        <div class="efeito efeito-lutador"></div>
+
+                        @*imagens*@
+                        @try
+                        {
+                            var base64 = Convert.ToBase64String(@item.Default);
+                            if (!string.IsNullOrEmpty(base64))
+                            {
+                                var img = String.Format("data:image/png;base64,{0}", base64);
+                                <img class="foto" src="@img" style="max-width: 100%;" />
+                            }
+                        }
+                        catch
+                        {
+                            <img class="foto" src="~/assets/img/outros/notfound.png" width="100" />
+                        }
+
+                        <hr class="poke-hr hr-l hr-lutador"> <hr class="poke-hr hr-r hr-lutador">
+                        @*nome*@
+                        <p class="nome"> @Html.DisplayFor(modelItem => item.Nome)</p>
+
+                       @*tipos*@
+                        @{
+
+                            
+                            if (item.Tipo2 == "NENHUM")
+                            {
+                               <p class="tipo tipo3 tipo-lutador"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                               <img src="assets/img/pokelogos/PKL-lutador.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-nenhum"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "FANTASMA")
+                            {
+                                <p class="tipo tipo1 tipo-lutador"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-lutador.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-fantasma"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "VENENOSO")
+                            {
+                                <p class="tipo tipo1 tipo-lutador"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-lutador.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-venenoso" id="tipo2"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "FOGO")
+                            {
+                                <p class="tipo tipo1 tipo-lutador"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-lutador.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-fogo"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "ELÉTRICO")
+                            {
+                                <p class="tipo tipo1 tipo-lutador"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-lutador.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-eletrico"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "SOMBRIO")
+                            {
+                                <p class="tipo tipo1 tipo-lutador"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-lutador.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-sombrio"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "GELO")
+                            {
+                                <p class="tipo tipo1 tipo-lutador"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-lutador.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-gelo"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "PLANTA")
+                            {
+                                <p class="tipo tipo1 tipo-lutador"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-lutador.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-planta"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "PEDRA")
+                            {
+                                <p class="tipo tipo1 tipo-lutador"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-lutador.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-pedra"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "SOLO")
+                            {
+                                <p class="tipo tipo1 tipo-lutador"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-lutador.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-solo"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "LUTADOR")
+                            {
+                                <p class="tipo tipo1 tipo-lutador"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-lutador.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-lutador"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "DRAGÃO")
+                            {
+                                <p class="tipo tipo1 tipo-lutador"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-lutador.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-dragon"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "INSETO")
+                            {
+                                <p class="tipo tipo1 tipo-lutador"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-lutador.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-inseto"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "PSÍQUICO")
+                            {
+                                <p class="tipo tipo1 tipo-lutador"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-lutador.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-psiquico"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "VOADOR")
+                            {
+                                <p class="tipo tipo1 tipo-lutador"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-lutador.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-voador"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "ÁGUA")
+                            {
+                                <p class="tipo tipo1 tipo-lutador"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-lutador.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-agua"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "FOGO")
+                            {
+                                <p class="tipo tipo1 tipo-lutador"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-lutador.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-lutador"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "NORMAL")
+                            {
+                                <p class="tipo tipo1 tipo-lutador"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-lutador.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-normal"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+
+
+
+                            if(item.Tipo2 == "NENHUM")
+                            {
+                                <p class="num num-3"><i class="fa fa-regular fa-angle-right"></i> @Html.DisplayFor(modelItem => item.num) <i class="fa fa-regular fa-angle-left"></i></p> 
+                            }
+                            else{
+                                <p class="num "><i class="fa fa-regular fa-angle-right"></i> @Html.DisplayFor(modelItem => item.num) <i class="fa fa-regular fa-angle-left"></i></p>    
+                                }       
+                    }
+                    </div>
+                </div>
+            </a>
+        }
+        else if (item.Tipo1 == "ÁGUA")
+        {
+            <a class="a-pokemon" asp-action="Details" asp-route-id="@item.Id">
+                <div class="borda">
+                    <div class="poke-card pokemon-agua">
+                        @*plano de fundo*@
+                        <div class="efeito efeito-agua"></div>
+
+                        @*imagens*@
+                        @try
+                        {
+                            var base64 = Convert.ToBase64String(@item.Default);
+                            if (!string.IsNullOrEmpty(base64))
+                            {
+                                var img = String.Format("data:image/png;base64,{0}", base64);
+                                <img class="foto" src="@img" style="max-width: 100%;" />
+                            }
+                        }
+                        catch
+                        {
+                            <img class="foto" src="~/assets/img/outros/notfound.png" width="100" />
+                        }
+
+                        <hr class="poke-hr hr-l hr-agua"> <hr class="poke-hr hr-r hr-agua">
+                        @*nome*@
+                        <p class="nome"> @Html.DisplayFor(modelItem => item.Nome)</p>
+
+                       @*tipos*@
+                        @{
+
+                            
+                            if (item.Tipo2 == "NENHUM")
+                            {
+                               <p class="tipo tipo3 tipo-agua"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                               <img src="assets/img/pokelogos/PKL-agua.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-nenhum"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "FANTASMA")
+                            {
+                                <p class="tipo tipo1 tipo-agua"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-agua.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-fantasma"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "VENENOSO")
+                            {
+                                <p class="tipo tipo1 tipo-agua"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-agua.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-venenoso" id="tipo2"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "FOGO")
+                            {
+                                <p class="tipo tipo1 tipo-agua"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-agua.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-fogo"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "ELÉTRICO")
+                            {
+                                <p class="tipo tipo1 tipo-agua"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-agua.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-eletrico"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "SOMBRIO")
+                            {
+                                <p class="tipo tipo1 tipo-agua"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-agua.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-sombrio"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "GELO")
+                            {
+                                <p class="tipo tipo1 tipo-agua"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-agua.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-gelo"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "PLANTA")
+                            {
+                                <p class="tipo tipo1 tipo-agua"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-agua.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-planta"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "PEDRA")
+                            {
+                                <p class="tipo tipo1 tipo-agua"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-agua.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-pedra"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "SOLO")
+                            {
+                                <p class="tipo tipo1 tipo-agua"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-agua.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-solo"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "LUTADOR")
+                            {
+                                <p class="tipo tipo1 tipo-agua"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-agua.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-lutador"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "DRAGÃO")
+                            {
+                                <p class="tipo tipo1 tipo-agua"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-agua.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-dragon"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "INSETO")
+                            {
+                                <p class="tipo tipo1 tipo-agua"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-agua.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-inseto"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "PSÍQUICO")
+                            {
+                                <p class="tipo tipo1 tipo-agua"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-agua.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-psiquico"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "VOADOR")
+                            {
+                                <p class="tipo tipo1 tipo-agua"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-agua.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-voador"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "ÁGUA")
+                            {
+                                <p class="tipo tipo1 tipo-agua"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-agua.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-agua"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "FOGO")
+                            {
+                                <p class="tipo tipo1 tipo-agua"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-agua.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-agua"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "NORMAL")
+                            {
+                                <p class="tipo tipo1 tipo-agua"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-agua.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-normal"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+
+
+
+                            if(item.Tipo2 == "NENHUM")
+                            {
+                                <p class="num num-3"><i class="fa fa-regular fa-angle-right"></i> @Html.DisplayFor(modelItem => item.num) <i class="fa fa-regular fa-angle-left"></i></p> 
+                            }
+                            else{
+                                <p class="num "><i class="fa fa-regular fa-angle-right"></i> @Html.DisplayFor(modelItem => item.num) <i class="fa fa-regular fa-angle-left"></i></p>    
+                                }       
+                    }
+                    </div>
+                </div>
+            </a>
+        }
+        else if (item.Tipo1 == "SOLO")
+        {
+            <a class="a-pokemon" asp-action="Details" asp-route-id="@item.Id">
+                <div class="borda">
+                    <div class="poke-card pokemon-solo">
+                        @*plano de fundo*@
+                        <div class="efeito efeito-solo"></div>
+
+                        @*imagens*@
+                        @try
+                        {
+                            var base64 = Convert.ToBase64String(@item.Default);
+                            if (!string.IsNullOrEmpty(base64))
+                            {
+                                var img = String.Format("data:image/png;base64,{0}", base64);
+                                <img class="foto" src="@img" style="max-width: 100%;" />
+                            }
+                        }
+                        catch
+                        {
+                            <img class="foto" src="~/assets/img/outros/notfound.png" width="100" />
+                        }
+
+                        <hr class="poke-hr hr-l hr-solo"> <hr class="poke-hr hr-r hr-solo">
+                      @*tipos*@
+                        @{
+
+                            
+                            if (item.Tipo2 == "NENHUM")
+                            {
+                               <p class="tipo tipo3 tipo-solo"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                               <img src="assets/img/pokelogos/PKL-solo.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-nenhum"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "FANTASMA")
+                            {
+                                <p class="tipo tipo1 tipo-solo"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-solo.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-fantasma"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "VENENOSO")
+                            {
+                                <p class="tipo tipo1 tipo-solo"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-solo.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-venenoso" id="tipo2"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "FOGO")
+                            {
+                                <p class="tipo tipo1 tipo-solo"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-solo.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-fogo"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "ELÉTRICO")
+                            {
+                                <p class="tipo tipo1 tipo-solo"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-solo.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-eletrico"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "SOMBRIO")
+                            {
+                                <p class="tipo tipo1 tipo-solo"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-solo.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-sombrio"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "GELO")
+                            {
+                                <p class="tipo tipo1 tipo-solo"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-solo.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-gelo"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "PLANTA")
+                            {
+                                <p class="tipo tipo1 tipo-solo"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-solo.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-planta"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "PEDRA")
+                            {
+                                <p class="tipo tipo1 tipo-solo"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-solo.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-pedra"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "SOLO")
+                            {
+                                <p class="tipo tipo1 tipo-solo"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-solo.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-solo"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "LUTADOR")
+                            {
+                                <p class="tipo tipo1 tipo-solo"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-solo.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-lutador"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "DRAGÃO")
+                            {
+                                <p class="tipo tipo1 tipo-solo"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-solo.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-dragon"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "INSETO")
+                            {
+                                <p class="tipo tipo1 tipo-solo"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-solo.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-inseto"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "PSÍQUICO")
+                            {
+                                <p class="tipo tipo1 tipo-solo"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-solo.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-psiquico"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "VOADOR")
+                            {
+                                <p class="tipo tipo1 tipo-solo"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-solo.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-voador"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "ÁGUA")
+                            {
+                                <p class="tipo tipo1 tipo-solo"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-solo.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-agua"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "FOGO")
+                            {
+                                <p class="tipo tipo1 tipo-solo"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-solo.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-solo"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "NORMAL")
+                            {
+                                <p class="tipo tipo1 tipo-solo"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-solo.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-normal"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+
+
+
+                            if(item.Tipo2 == "NENHUM")
+                            {
+                                <p class="num num-3"><i class="fa fa-regular fa-angle-right"></i> @Html.DisplayFor(modelItem => item.num) <i class="fa fa-regular fa-angle-left"></i></p> 
+                            }
+                            else{
+                                <p class="num "><i class="fa fa-regular fa-angle-right"></i> @Html.DisplayFor(modelItem => item.num) <i class="fa fa-regular fa-angle-left"></i></p>    
+                                }       
+                    }
+                    </div>
+                </div>
+            </a>
+        }
+        else if (item.Tipo1 == "PSÍQUICO")
+        {
+            <a class="a-pokemon" asp-action="Details" asp-route-id="@item.Id">
+                <div class="borda">
+                    <div class="poke-card pokemon-psiquico">
+                        @*plano de fundo*@
+                        <div class="efeito efeito-psiquico"></div>
+
+                        @*imagens*@
+                        @try
+                        {
+                            var base64 = Convert.ToBase64String(@item.Default);
+                            if (!string.IsNullOrEmpty(base64))
+                            {
+                                var img = String.Format("data:image/png;base64,{0}", base64);
+                                <img class="foto" src="@img" style="max-width: 100%;" />
+                            }
+                        }
+                        catch
+                        {
+                            <img class="foto" src="~/assets/img/outros/notfound.png" width="100" />
+                        }
+
+                        <hr class="poke-hr hr-l hr-psiquico"> <hr class="poke-hr hr-r hr-psiquico">
+                        @*nome*@
+                        <p class="nome"> @Html.DisplayFor(modelItem => item.Nome)</p>
+
+                       @*tipos*@
+                        @{
+
+                            
+                            if (item.Tipo2 == "NENHUM")
+                            {
+                               <p class="tipo tipo3 tipo-psiquico"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                               <img src="assets/img/pokelogos/PKL-psiquico.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-nenhum"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "FANTASMA")
+                            {
+                                <p class="tipo tipo1 tipo-psiquico"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-psiquico.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-fantasma"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "VENENOSO")
+                            {
+                                <p class="tipo tipo1 tipo-psiquico"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-psiquico.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-venenoso" id="tipo2"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "FOGO")
+                            {
+                                <p class="tipo tipo1 tipo-psiquico"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-psiquico.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-fogo"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "ELÉTRICO")
+                            {
+                                <p class="tipo tipo1 tipo-psiquico"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-psiquico.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-eletrico"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "SOMBRIO")
+                            {
+                                <p class="tipo tipo1 tipo-psiquico"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-psiquico.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-sombrio"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "GELO")
+                            {
+                                <p class="tipo tipo1 tipo-psiquico"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-psiquico.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-gelo"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "PLANTA")
+                            {
+                                <p class="tipo tipo1 tipo-psiquico"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-psiquico.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-planta"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "PEDRA")
+                            {
+                                <p class="tipo tipo1 tipo-psiquico"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-psiquico.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-pedra"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "SOLO")
+                            {
+                                <p class="tipo tipo1 tipo-psiquico"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-psiquico.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-solo"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "LUTADOR")
+                            {
+                                <p class="tipo tipo1 tipo-psiquico"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-psiquico.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-lutador"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "DRAGÃO")
+                            {
+                                <p class="tipo tipo1 tipo-psiquico"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-psiquico.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-dragon"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "INSETO")
+                            {
+                                <p class="tipo tipo1 tipo-psiquico"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-psiquico.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-inseto"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "PSÍQUICO")
+                            {
+                                <p class="tipo tipo1 tipo-psiquico"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-psiquico.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-psiquico"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "VOADOR")
+                            {
+                                <p class="tipo tipo1 tipo-psiquico"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-psiquico.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-voador"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "ÁGUA")
+                            {
+                                <p class="tipo tipo1 tipo-psiquico"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-psiquico.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-agua"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "FOGO")
+                            {
+                                <p class="tipo tipo1 tipo-psiquico"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-psiquico.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-psiquico"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "NORMAL")
+                            {
+                                <p class="tipo tipo1 tipo-psiquico"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-psiquico.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-normal"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+
+
+
+                            if(item.Tipo2 == "NENHUM")
+                            {
+                                <p class="num num-3"><i class="fa fa-regular fa-angle-right"></i> @Html.DisplayFor(modelItem => item.num) <i class="fa fa-regular fa-angle-left"></i></p> 
+                            }
+                            else{
+                                <p class="num "><i class="fa fa-regular fa-angle-right"></i> @Html.DisplayFor(modelItem => item.num) <i class="fa fa-regular fa-angle-left"></i></p>    
+                                }       
+                    }
+                    </div>
+                </div>
+            </a>
+        }
+
+        else if (item.Tipo1 == "NORMAL")
+        {
+            <a class="a-pokemon" asp-action="Details" asp-route-id="@item.Id">
+                <div class="borda">
+                    <div class="poke-card pokemon-normal">
+                        @*plano de fundo*@
+                        <div class="efeito efeito-normal"></div>
+
+                        @*imagens*@
+                        @try
+                        {
+                            var base64 = Convert.ToBase64String(@item.Default);
+                            if (!string.IsNullOrEmpty(base64))
+                            {
+                                var img = String.Format("data:image/png;base64,{0}", base64);
+                                <img class="foto" src="@img" style="max-width: 100%;" />
+                            }
+                        }
+                        catch
+                        {
+                            <img class="foto" src="~/assets/img/outros/notfound.png" width="100" />
+                        }
+
+                        <hr class="poke-hr hr-l hr-normal"> <hr class="poke-hr hr-r hr-normal">
+                        @*nome*@
+                        <p class="nome"> @Html.DisplayFor(modelItem => item.Nome)</p>
+
+                       @*tipos*@
+                        @{
+
+                            
+                            if (item.Tipo2 == "NENHUM")
+                            {
+                               <p class="tipo tipo3 tipo-normal"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                               <img src="assets/img/pokelogos/PKL-normal.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-nenhum"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "FANTASMA")
+                            {
+                                <p class="tipo tipo1 tipo-normal"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-normal.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-fantasma"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "VENENOSO")
+                            {
+                                <p class="tipo tipo1 tipo-normal"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-normal.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-venenoso" id="tipo2"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "FOGO")
+                            {
+                                <p class="tipo tipo1 tipo-normal"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-normal.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-fogo"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "ELÉTRICO")
+                            {
+                                <p class="tipo tipo1 tipo-normal"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-normal.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-eletrico"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "SOMBRIO")
+                            {
+                                <p class="tipo tipo1 tipo-normal"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-normal.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-sombrio"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "GELO")
+                            {
+                                <p class="tipo tipo1 tipo-normal"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-normal.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-gelo"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "PLANTA")
+                            {
+                                <p class="tipo tipo1 tipo-normal"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-normal.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-planta"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "PEDRA")
+                            {
+                                <p class="tipo tipo1 tipo-normal"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-normal.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-pedra"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "SOLO")
+                            {
+                                <p class="tipo tipo1 tipo-normal"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-normal.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-solo"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "LUTADOR")
+                            {
+                                <p class="tipo tipo1 tipo-normal"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-normal.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-lutador"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "DRAGÃO")
+                            {
+                                <p class="tipo tipo1 tipo-normal"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-normal.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-dragon"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "INSETO")
+                            {
+                                <p class="tipo tipo1 tipo-normal"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-normal.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-inseto"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "PSÍQUICO")
+                            {
+                                <p class="tipo tipo1 tipo-normal"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-normal.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-psiquico"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "VOADOR")
+                            {
+                                <p class="tipo tipo1 tipo-normal"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-normal.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-voador"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "ÁGUA")
+                            {
+                                <p class="tipo tipo1 tipo-normal"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-normal.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-agua"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "FOGO")
+                            {
+                                <p class="tipo tipo1 tipo-normal"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-normal.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-normal"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "NORMAL")
+                            {
+                                <p class="tipo tipo1 tipo-normal"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-normal.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-normal"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+
+
+
+                            if(item.Tipo2 == "NENHUM")
+                            {
+                                <p class="num num-3"><i class="fa fa-regular fa-angle-right"></i> @Html.DisplayFor(modelItem => item.num) <i class="fa fa-regular fa-angle-left"></i></p> 
+                            }
+                            else{
+                                <p class="num "><i class="fa fa-regular fa-angle-right"></i> @Html.DisplayFor(modelItem => item.num) <i class="fa fa-regular fa-angle-left"></i></p>    
+                                }       
+                    }
+                    </div>
+                </div>
+            </a>
+        }
+
+        else if (item.Tipo1 == "VOADOR")
+        {
+            <a class="a-pokemon" asp-action="Details" asp-route-id="@item.Id">
+                <div class="borda">
+                    <div class="poke-card pokemon-voador">
+                        @*plano de fundo*@
+                        <div class="efeito efeito-voador"></div>
+
+                        @*imagens*@
+                        @try
+                        {
+                            var base64 = Convert.ToBase64String(@item.Default);
+                            if (!string.IsNullOrEmpty(base64))
+                            {
+                                var img = String.Format("data:image/png;base64,{0}", base64);
+                                <img class="foto" src="@img" style="max-width: 100%;" />
+                            }
+                        }
+                        catch
+                        {
+                            <img class="foto" src="~/assets/img/outros/notfound.png" width="100" />
+                        }
+
+                        <hr class="poke-hr hr-l hr-voador"> <hr class="poke-hr hr-r hr-voador">
+                        @*nome*@
+                        <p class="nome"> @Html.DisplayFor(modelItem => item.Nome)</p>
+@*tipos*@
+                        @{
+
+                            
+                            if (item.Tipo2 == "NENHUM")
+                            {
+                               <p class="tipo tipo3 tipo-voador"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                               <img src="assets/img/pokelogos/PKL-voador.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-nenhum"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "FANTASMA")
+                            {
+                                <p class="tipo tipo1 tipo-voador"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-voador.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-fantasma"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "VENENOSO")
+                            {
+                                <p class="tipo tipo1 tipo-voador"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-voador.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-venenoso" id="tipo2"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "FOGO")
+                            {
+                                <p class="tipo tipo1 tipo-voador"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-voador.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-fogo"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "ELÉTRICO")
+                            {
+                                <p class="tipo tipo1 tipo-voador"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-voador.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-eletrico"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "SOMBRIO")
+                            {
+                                <p class="tipo tipo1 tipo-voador"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-voador.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-sombrio"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "GELO")
+                            {
+                                <p class="tipo tipo1 tipo-voador"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-voador.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-gelo"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "PLANTA")
+                            {
+                                <p class="tipo tipo1 tipo-voador"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-voador.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-planta"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "PEDRA")
+                            {
+                                <p class="tipo tipo1 tipo-voador"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-voador.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-pedra"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "SOLO")
+                            {
+                                <p class="tipo tipo1 tipo-voador"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-voador.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-solo"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "LUTADOR")
+                            {
+                                <p class="tipo tipo1 tipo-voador"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-voador.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-lutador"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "DRAGÃO")
+                            {
+                                <p class="tipo tipo1 tipo-voador"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-voador.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-dragon"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "INSETO")
+                            {
+                                <p class="tipo tipo1 tipo-voador"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-voador.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-inseto"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "PSÍQUICO")
+                            {
+                                <p class="tipo tipo1 tipo-voador"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-voador.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-psiquico"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "VOADOR")
+                            {
+                                <p class="tipo tipo1 tipo-voador"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-voador.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-voador"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "ÁGUA")
+                            {
+                                <p class="tipo tipo1 tipo-voador"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-voador.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-agua"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "FOGO")
+                            {
+                                <p class="tipo tipo1 tipo-voador"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-voador.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-voador"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "NORMAL")
+                            {
+                                <p class="tipo tipo1 tipo-voador"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-voador.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-normal"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+
+
+
+                            if(item.Tipo2 == "NENHUM")
+                            {
+                                <p class="num num-3"><i class="fa fa-regular fa-angle-right"></i> @Html.DisplayFor(modelItem => item.num) <i class="fa fa-regular fa-angle-left"></i></p> 
+                            }
+                            else{
+                                <p class="num "><i class="fa fa-regular fa-angle-right"></i> @Html.DisplayFor(modelItem => item.num) <i class="fa fa-regular fa-angle-left"></i></p>    
+                                }       
+                    }
+                    </div>
+                </div>
+            </a>
+        }
+
+        else if (item.Tipo1 == "PLANTA")
+        {
+            <a class="a-pokemon" asp-action="Details" asp-route-id="@item.Id">
+                <div class="borda">
+                    <div class="poke-card pokemon-planta">
+                        @*plano de fundo*@
+                        <div class="efeito efeito-planta"></div>
+
+                        @*imagens*@
+                        @try
+                        {
+                            var base64 = Convert.ToBase64String(@item.Default);
+                            if (!string.IsNullOrEmpty(base64))
+                            {
+                                var img = String.Format("data:image/png;base64,{0}", base64);
+                                <img class="foto" src="@img" style="max-width: 100%;" />
+                            }
+                        }
+                        catch
+                        {
+                            <img class="foto" src="~/assets/img/outros/notfound.png" width="100" />
+                        }
+
+                        <hr class="poke-hr hr-l hr-planta"> <hr class="poke-hr hr-r hr-planta">
+                        @*nome*@
+                        <p class="nome"> @Html.DisplayFor(modelItem => item.Nome)</p>
+
+                        @*tipos*@
+                        @{
+
+                            
+                            if (item.Tipo2 == "NENHUM")
+                            {
+                               <p class="tipo tipo3 tipo-planta"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                               <img src="assets/img/pokelogos/PKL-planta.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-nenhum"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "FANTASMA")
+                            {
+                                <p class="tipo tipo1 tipo-planta"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-planta.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-fantasma"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "VENENOSO")
+                            {
+                                <p class="tipo tipo1 tipo-planta"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-planta.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-venenoso" id="tipo2"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "FOGO")
+                            {
+                                <p class="tipo tipo1 tipo-planta"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-planta.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-fogo"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "ELÉTRICO")
+                            {
+                                <p class="tipo tipo1 tipo-planta"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-planta.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-eletrico"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "SOMBRIO")
+                            {
+                                <p class="tipo tipo1 tipo-planta"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-planta.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-sombrio"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "GELO")
+                            {
+                                <p class="tipo tipo1 tipo-planta"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-planta.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-gelo"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "PLANTA")
+                            {
+                                <p class="tipo tipo1 tipo-planta"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-planta.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-planta"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "PEDRA")
+                            {
+                                <p class="tipo tipo1 tipo-planta"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-planta.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-pedra"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "SOLO")
+                            {
+                                <p class="tipo tipo1 tipo-planta"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-planta.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-solo"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "LUTADOR")
+                            {
+                                <p class="tipo tipo1 tipo-planta"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-planta.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-lutador"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "DRAGÃO")
+                            {
+                                <p class="tipo tipo1 tipo-planta"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-planta.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-dragon"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "INSETO")
+                            {
+                                <p class="tipo tipo1 tipo-planta"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-planta.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-inseto"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "PSÍQUICO")
+                            {
+                                <p class="tipo tipo1 tipo-planta"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-planta.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-psiquico"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "VOADOR")
+                            {
+                                <p class="tipo tipo1 tipo-planta"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-planta.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-voador"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "ÁGUA")
+                            {
+                                <p class="tipo tipo1 tipo-planta"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-planta.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-agua"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "FOGO")
+                            {
+                                <p class="tipo tipo1 tipo-planta"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-planta.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-planta"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+                            else if (item.Tipo2 == "NORMAL")
+                            {
+                                <p class="tipo tipo1 tipo-planta"> @Html.DisplayFor(modelItem => item.Tipo1)</p>
+                                <img src="assets/img/pokelogos/PKL-planta.png" alt="" class="poke-logotipo">
+                                <p class="tipo tipo2 tipo-normal"> @Html.DisplayFor(modelItem => item.Tipo2)</p>
+                            }
+
+
+
+                            if(item.Tipo2 == "NENHUM")
+                            {
+                                <p class="num num-3"><i class="fa fa-regular fa-angle-right"></i> @Html.DisplayFor(modelItem => item.num) <i class="fa fa-regular fa-angle-left"></i></p> 
+                            }
+                            else{
+                                <p class="num "><i class="fa fa-regular fa-angle-right"></i> @Html.DisplayFor(modelItem => item.num) <i class="fa fa-regular fa-angle-left"></i></p>    
+                                }       
+                    }
+                    </div>
+                </div>
+            </a>
+        }
+    }
+    @* <script>
+        var tipo = document.getElementById("tipo2").value;
+        var tipo1 = document.getElementById("tipo1");
+        var tipo2 = document.getElementById("tipo2");
+        if(tipo == "NENHUM")
+        {
+        tipo2.classList.add("hidden");
+        tipo1.classList.remove("tipo1");
+        tipo1.classList.add("tipo3");
+        }
+        </script>*@
+</div>

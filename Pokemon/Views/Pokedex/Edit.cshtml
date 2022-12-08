@@ -1,0 +1,218 @@
+﻿@model Pokemon.Models.Pokedex
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="pk-content">
+
+    <!--  conteudo -->
+    <div class="body-fantasma">
+        <form asp-action="Edit" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <!--  _________________________________________________________________________________________________________________________ -->
+            <!--  -------------------------------------------------parte de cima----------------------------------------------------------- -->
+            <div class="cima">
+                <!--  plano de fundo  -->
+                <div class="plano-efeito plano-efeito-fantasma"> </div>
+                <!--  _________________________________________________________________________________________________________________________ -->
+                <!-- ---------------------------------------------------- sprites--------------------------------------------------------------  -->
+                <div class="fotos-div">
+               
+                    <div id="foto-enter">
+                        <br />
+                      <img src="~/assets/img/outros/default.png" alt="" class="fbtns fbtn-default foto-icon" /><br />
+                        <input type="file" id="Img" name="Img" class="foto-form" style="opacity:0;z-index:5;"/>
+                        @{
+                            var base64 = Convert.ToBase64String(@Model.Default);
+                            var img = String.Format("data:image/png;base64,{0}", base64);
+                            <img src="@img" class="foto-painel-edit" />
+                    }
+                        <span asp-validation-for="Default" class="text-danger"></span>
+
+                    </div>
+
+
+                    <div id="foto-enter">
+                        <img src="~/assets/img/outros/shiny.png" alt="" class="fbtns fbtn-default foto-icon" /> <br />
+                        <input asp-for="mega" type="file" id="Img" name="Img" class="foto-form" placeholder="placer" /><br />
+                        <span asp-validation-for="mega" class="text-danger"></span>
+                        <label class="foto-label"></label>
+                    </div>
+
+                    <div id="foto-enter">
+                        <img src="~/assets/img/outros/mega.png" alt="" class="fbtns fbtn-default foto-icon" /> <br />
+                        <input asp-for="Shiny" type="file" id="Img" name="Img" class="foto-form" /><br />
+                        <span asp-validation-for="Shiny" class="text-danger"></span>
+                        <label class="foto-label"></label>
+                    </div>
+                </div>
+
+
+                <!--  --------NOME------------ -->
+                <input asp-for="Nome" class="titulo-crt" />
+                <span asp-validation-for="Nome" class="text-danger"></span>
+                <!--  --------tipos------------ -->
+                <div class="tipo-options"></div> <div class="tipo-options"></div>
+
+                <input asp-for="Tipo1" class="tipo-crt tipo1-crt tipo-fantasma" style="text-transform:uppercase" placeholder="" />
+                <span asp-validation-for="Tipo1" class="text-danger"></span>
+
+                <input asp-for="Tipo2" class="tipo-crt tipo2-crt tipo-venenoso" style="text-transform:uppercase" />
+                <span asp-validation-for="Tipo2" class="text-danger"></span>                <input asp-for="num" class="num-crt" />
+            </div>
+
+            <div class="separador "></div>
+
+            <!--  _________________________________________________________________________________________________________________________ -->
+            <!-- ---------------------------------------------------- Parte Inferior------------------------------------------------------- -->
+            <!--  --------características------------ -->
+            <div class="carac sp-SOMBRIO">
+                <div class="sp">
+                    <input asp-for="sp" class="spResposta-crt" />
+                    <span asp-validation-for="sp" class="text-danger"></span>
+                    <p class="spPergunta">Espécie</p>
+                </div>
+
+                <div class="sp">
+                    <input asp-for="altura" class="spResposta-crt" />
+                    <span asp-validation-for="altura" class="text-danger"></span>
+                    <p class="spPergunta">Altura</p>
+                </div>
+
+                <div class="sp">
+                    <input asp-for="Peso" class="spResposta-crt" />
+                    <span asp-validation-for="Peso" class="text-danger"></span>
+                    <p class="spPergunta">Peso</p>
+                </div>
+            </div>
+            <div class="separador sep2"></div>
+
+            <!--  --------Descrição da Pokedex------------ -->
+
+            <div class="description-area">
+                <label asp-for="Descr"></label>
+                <input asp-for="Descr" class="description-crt" />
+                <span asp-validation-for="Descr" class="text-danger"></span>
+            </div>
+
+            <div class="separador sep3"></div>
+
+            <!--  --------Informações de Batalha------------ -->
+            <div class="battle-info-area">
+                <!--Base info-->
+                <div class="base-info-area">
+                    <h4 class="status-title">Status</h4>
+                    <div class="base-info">
+                        <label asp-for="hp" class="base-label"></label>
+                        <input asp-for="hp" class="base-input" /><br />
+                        <span asp-validation-for="hp" class="text-danger"></span>
+                    </div>
+                    <div class="base-info">
+                        <label asp-for="vel" class="base-label"></label>
+                        <input asp-for="vel" class="base-input" /><br />
+                        <span asp-validation-for="vel" class="text-danger"></span>
+                    </div>
+                    <div class="base-info">
+                        <label asp-for="atk" class="base-label"></label>
+                        <input asp-for="atk" class="base-input" /><br />
+                        <span asp-validation-for="atk" class="text-danger"></span>
+                    </div>
+                    <div class="base-info">
+                        <label asp-for="dfs" class="base-label"></label>
+                        <input asp-for="dfs" class="base-input" /><br />
+                        <span asp-validation-for="dfs" class="text-danger"></span>
+                    </div>
+                    <div class="base-info">
+                        <label asp-for="atkE" class="base-label"></label>
+                        <input asp-for="atkE" class="base-input" /><br />
+                        <span asp-validation-for="atkE" class="text-danger"></span>
+                    </div>
+                    <div class="base-info">
+                        <label asp-for="dfsE" class="base-label"></label>
+                        <input asp-for="dfsE" class="base-input" /><br />
+                        <span asp-validation-for="dfsE" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <!--Moves-->
+                <h4 class="move-title">Movimetos</h4>
+                <div class="move-area">
+                    <div class="move">
+                        <label asp-for="move1"></label>
+                        <input asp-for="move1" class="move-input" />
+                        <span asp-validation-for="move1" class="text-danger"></span>
+                    </div>
+                    <div class="move">
+                        <label asp-for="move2"></label>
+                        <input asp-for="move2" class="move-input" />
+                        <span asp-validation-for="move2" class="text-danger"></span>
+                    </div>
+                    <div class="move move-baixo">
+                        <label asp-for="move3"></label>
+                        <input asp-for="move3" class="move-input" />
+                        <span asp-validation-for="move3" class="text-danger"></span>
+                    </div>
+                    <div class="move move-baixo">
+                        <label asp-for="move4"></label>
+                        <input asp-for="move4" class="move-input" />
+                        <span asp-validation-for="move4" class="text-danger"></span>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!--  -------------------Botões------------------ -->
+
+            <div class="form-group menu-float">
+                <button type="submit" class="btn btn-primary btn-icon-split islvr">
+                    <span class="text text-white salvar">Salvar</span>
+                    <span class="icon text-white">
+                        <img src="~/assets/img/outros/disk.png" class="disk-icon" />
+                    </span>
+                </button> <br />
+            
+        </form>
+
+        
+            <form asp-action="Delete">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Id" />
+
+                <button type="submit" class="btn btn-danger btn-icon-split iemr">
+                    <input asp-for="Id" type="hidden" />
+                    <span class="text text-white eliminar">Apagar</span>
+                    <span class="icon text-white ">
+                        <i class="fas fa-trash"></i>
+                    </span>
+                </button>
+            </form> <br />
+
+
+            <button asp-action="Details" asp-route-id="@Model.Id" type="submit" class="btn btn-icon-split btn-warning iclr">
+                <a asp-action="Details" asp-route-id="@Model.Id" class="text text-white cancelar">Cancelar</a>
+                <span class="icon text-white">
+                    <i class="fa fa-solid fa-ban"></i>
+                </span>
+            </button>
+
+            <img src="~/assets/img/pokelogos/pokebola-aberta.png" class="abrir-menu" />
+        </div>
+
+        <form asp-action="Delete">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Id" />
+
+                <button type="submit" class="btn btn-danger btn-icon-split iemr">
+                    <input asp-for="Id" type="hidden" />
+                    <span class="text text-white eliminar">Apagar</span>
+                    <span class="icon text-white ">
+                        <i class="fas fa-trash"></i>
+                    </span>
+                </button>
+            </form> <br />
+
+    </div>
+</div>

@@ -1,0 +1,1507 @@
+﻿#pokebola {
+    width: 40px;
+    height: 40px;
+}
+
+.pokedex-icon {
+    width: 20px;
+    height: 20px;
+}
+
+.fchNav {
+    transition: 0.2s;
+}
+
+#tog-icon {
+    position: absolute;
+}
+
+.fchNav:hover {
+    background-color: #f8f9fc !important;
+    color: black;
+}
+
+.sidebar-pokemon {
+    background-Image: linear-gradient(180deg, rgb(243, 72, 72) 10%, rgb(153, 51, 51) 100%);
+}
+
+@font-face {
+    font-family: pokemon;
+    src: url(/assets/pokefont/PokemonSolid.ttf);
+}
+
+.pk-content a {
+    text-decoration: none;
+    color: black;
+}
+
+.topbar-color {
+    background-color: #ff0049;
+}
+
+.pk-content {
+    position: relative;
+    width: 119%;
+    height: 100%;
+    left: -9.5%;
+    display: flex;
+    z-index:0;
+}
+
+.index {
+    top: -200px;
+    left: 0.5%;
+}
+/*------------------------------------------------------------------------*/ /*---------------------------------------hr-------------------------------*/
+/*--------------------------------------CARDS-------------------------------*/ /*---------------------------------------hr-------------------------------*/
+/*---------------------------------------hr-------------------------------*/ /*---------------------------------------hr-------------------------------*/
+
+
+.poke-logotipo {
+    position: absolute;
+    transform: scale(0.4);
+    top: 178px;
+    left: 65px;
+    border: none;
+}
+
+@media (min-width: 576px) {
+    .poke-logotipo {
+        top: 167px;
+    }
+}
+
+.a-pokemon {
+    cursor: pointer;
+    margin-right: 25px;
+}
+
+.borda {
+    border: 2px solid black;
+    border-radius: 0.50rem;
+    width: 254px;
+    height: 403px;
+    padding-bottom: 2px;
+}
+/*---------------------------------------hr-------------------------------*/
+.poke-hr {
+    position: absolute;
+    background-color: black;
+    color: black;
+    border: 1px solid rgb(207, 207, 207);
+    width: 90px;
+}
+
+.hr-l {
+    bottom: 151px;
+    left: 2px;
+}
+
+.hr-r {
+    bottom: 151px;
+    right: 2px;
+}
+
+.hr-fantasma {
+    border: 1px solid rgb(102, 72, 151);
+}
+
+.hr-fogo {
+    border: 1px solid rgb(153, 51, 51);
+}
+
+.hr-eletrico {
+    border: 1px solid rgb(240, 236, 17);
+}
+
+.hr-sombrio {
+    border: 1px solid rgb(48, 41, 54);
+}
+
+.hr-venenoso {
+    border: 1px solid rgb(153, 51, 148);
+}
+
+.hr-planta {
+    border: 1px solid rgb(0, 191, 114);
+}
+
+.hr-inseto {
+    border: 1px solid rgb(157, 222, 57);
+}
+
+.hr-psiquico {
+    border: 1px solid #F92377;
+}
+
+.hr-agua {
+    border: 1px solid rgb(61, 133, 238);
+}
+
+.hr-dragon {
+    border: 1px solid rgb(7, 45, 94);
+}
+
+.hr-voador {
+    border: 1px solid rgb(120, 143, 147);
+}
+
+.hr-solo {
+    border: 1px solid rgb(168, 85, 47);
+}
+
+.hr-pedra {
+    border: 1px solid rgb(106, 21, 21);
+}
+
+.hr-gelo {
+    border: 1px solid rgb(203, 245, 255);
+}
+
+.hr-lutador {
+    border: 1px solid rgb(227, 19, 19);
+}
+
+.hr-normal {
+    border: 1px solid rgb(151, 99, 99);
+}
+
+
+/*---------------------------------------Card & tipos-------------------------------*/
+
+.poke-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid #e3e6f0;
+    border-radius: 0.35rem;
+    width: 250px;
+    height: 400px;
+}
+
+.pokemon-fantasma {
+    border: 3px solid rebeccapurple;
+}
+
+.pokemon-fogo {
+    border: 3px solid rgb(204, 39, 39);
+}
+
+.pokemon-eletrico {
+    border: 3px solid #f6c23e;
+}
+
+.pokemon-sombrio {
+    border: 3px solid rgb(48, 41, 54);
+}
+
+.pokemon-venenoso {
+    border: 3px solid rgb(153, 51, 148);
+}
+
+.pokemon-planta {
+    border: 3px solid rgb(0, 191, 114);
+}
+
+.pokemon-inseto {
+    border: 3px solid rgb(157, 222, 57);
+}
+
+.pokemon-psiquico {
+    border: 3px solid #F92377;
+}
+
+.pokemon-agua {
+    border: 3px solid rgb(61, 133, 238);
+}
+
+.pokemon-dragon {
+    border: 3px solid rgb(7, 45, 94);
+}
+
+.pokemon-voador {
+    border: 3px solid rgb(120, 143, 147);
+}
+
+.pokemon-solo {
+    border: 3px solid rgb(168, 85, 47);
+}
+
+.pokemon-pedra {
+    border: 3px solid rgb(106, 21, 21);
+}
+
+.pokemon-gelo {
+    border: 3px solid rgb(203, 245, 255);
+}
+
+.pokemon-lutador {
+    border: 3px solid rgb(227, 19, 19);
+}
+
+.pokemon-normal {
+    border: 3px solid rgb(151, 99, 99);
+}
+
+/*---------------------------------------Efeitos & tipos-------------------------------*/
+.efeito {
+    position: absolute;
+    background-color: black;
+    width: 248px;
+    height: 188px;
+    border-bottom-left-radius: 100%;
+    border-bottom-right-radius: 100%;
+    border: 0px solid;
+    border-top-left-radius: 0.35rem;
+    border-top-right-radius: 0.35rem;
+    left: -1px;
+    top: -1px;
+}
+
+.efeito-sombrio {
+    background-color: rgb(48, 41, 54);
+}
+
+.efeito-fantasma {
+    background-color: rebeccapurple;
+}
+
+.efeito-fogo {
+    background-color: rgb(204, 39, 39);
+}
+
+.efeito-eletrico {
+    background-color: #f6c23e;
+}
+
+.efeito-venenoso {
+    background-color: rgb(153, 51, 148);
+}
+
+.efeito-planta {
+    background-color: rgb(0, 191, 114);
+}
+
+.efeito-inseto {
+    background-color: rgb(157, 222, 57);
+}
+
+.efeito-psiquico {
+    background-color: #F92377;
+}
+
+.efeito-agua {
+    background-color: rgb(61, 133, 238);
+}
+
+.efeito-dragon {
+    background-color: rgb(7, 45, 94);
+}
+
+.efeito-voador {
+    background-color: rgb(120, 143, 147);
+}
+
+.efeito-solo {
+    background-color: rgb(168, 85, 47);
+}
+
+.efeito-pedra {
+    background-color: rgb(106, 21, 21);
+}
+
+.efeito-gelo {
+    background-color: rgb(203, 245, 255);
+}
+
+.efeito-lutador {
+    background-color: rgb(227, 19, 19);
+}
+
+.efeito-normal {
+    background-color: rgb(151, 99, 99);
+}
+/*---------------------------------------Foto-------------------------------*/
+.foto {
+    position: relative;
+    width: 150px;
+    height: 137px;
+    left: 15%;
+    top: 5%;
+    transition: 0.2s;
+    z-index: 50;
+}
+
+.scale-foto {
+    transform: scale(5);
+    left: 15%;
+    top: 50%;
+}
+
+.foto:hover {
+    top: 0%;
+    transform: scale(1.1);
+}
+/*---------------------------------------Nome & tipos-------------------------------*/
+.nome {
+    position: relative;
+    font-size: large;
+    top: 10%;
+    left: 38%;
+    font-family:pokemon;
+    z-index:2;
+}
+
+/*---------------------------------------Tipos & tipos-------------------------------*/
+.tipo {
+    position: relative;
+    background-color: rgb(194, 194, 194);
+    color: #fff;
+    padding-left: 3%;
+    padding-right: 3%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 5px;
+    width: 85px;
+    height: 20px;
+    transition: 0.2s;
+    font-size: 14.5px;
+    text-align: center;
+}
+
+@media (min-width: 576px) {
+    .tipo {
+        padding-top: 1px;
+        padding-bottom: 5px;
+        border-radius: 5px;
+        width: 85px;
+        height: 20px;
+        font-size: 12.5px;
+    }
+
+    .tipo2 {
+        top: 7%;
+        left: 55%
+    }
+}
+
+.tipo1 {
+    top: 12.8%;
+    left: 6.2%;
+}
+
+.tipo3 {
+    top: 17.4%;
+    left: 33.5%;
+}
+
+.tipo2 {
+    top: 3.43%;
+    left: 62%;
+}
+
+.tipo1:hover {
+    transform: scale(1.05);
+}
+
+.tipo2:hover {
+    transform: scale(1.05);
+}
+
+.tipo-sombrio {
+    background-color: rgb(48, 41, 54);
+    color: rgb(255, 255, 255);
+}
+
+.tipo-fantasma {
+    background-color: rebeccapurple !important;
+    color: rgb(255, 255, 255);
+}
+
+.tipo-eletrico {
+    background-color: #f6c23e !important;
+    color: rgb(255, 255, 255);
+    text-decoration-style: dashed;
+}
+
+.tipo-venenoso {
+    background-color: rgb(153, 51, 148) !important;
+    color: rgb(255, 255, 255);
+}
+
+.tipo-fogo {
+    background-color: rgb(228, 35, 35) !important;
+    color: rgb(255, 255, 255);
+}
+
+.tipo-planta {
+    background: rgb(0, 191, 114);
+}
+
+.tipo-inseto {
+    background: rgb(157, 222, 57);
+}
+
+.tipo-psiquico {
+    background: #F92377;
+}
+
+.tipo-agua {
+    background: rgb(61, 133, 238);
+}
+
+.tipo-dragon {
+    background: rgb(7, 45, 94);
+}
+
+.tipo-voador {
+    background: rgb(120, 143, 147);
+}
+
+.tipo-solo {
+    background: rgb(168, 85, 47);
+}
+
+.tipo-pedra {
+    background: rgb(106, 21, 21);
+}
+
+.tipo-gelo {
+    background: rgb(203, 245, 255);
+}
+
+.tipo-lutador {
+    background: rgb(227, 19, 19);
+}
+
+.tipo-normal {
+    background: rgb(151, 99, 99);
+}
+
+.tipo-nenhum{
+    display:none;
+    visibility:hidden;
+}
+/*---------------------------------------Numero da Pokedéx-------------------------------*/
+.num {
+    position: relative;
+    font-size: 40px;
+    bottom: -25px;
+    left: 75px;
+    color: rgb(129, 139, 145);
+    transition: 0.2s;
+    width: 150px;
+}
+
+.num-3{
+    top: 60px;
+}
+
+    .num:hover {
+        transform: scale(1.03);
+        left: 76px;
+    }
+
+/*----------------------------------------------------------*/ /*------------------------------------------------------------------------*/
+/*---------------------------------------------------------Painel------------------------------------------------------------------------*/
+/*----------------------------------------------------------*/ /*------------------------------------------------------------------------*/
+
+.body-detalhes {
+    background-color: #e3e6f0;
+    width: 100%;
+    height: 100%;
+}
+
+.separador {
+    position: absolute;
+    height: 5px;
+    background-color: rgb(85, 85, 85);
+    width: 80%;
+    top: 700px;
+    left: 10%;
+    border-radius: 15px;
+}
+
+.sep2 {
+    top: 900px;
+}
+
+.sep3 {
+    top: 1190px;
+}
+
+.separador-fantasma {
+    background-color: rebeccapurple;
+}
+
+.separador-fogo {
+    background: rgb(204, 39, 39);
+}
+
+.separador-eletrico {
+    background: #f6c23e;
+}
+
+.separador-sombrio {
+    background: rgb(48, 41, 54);
+}
+
+.separador-venenoso {
+    background: rgb(153, 51, 148);
+}
+
+.separador-planta {
+    background: rgb(0, 191, 114);
+}
+
+.separador-inseto {
+    background: rgb(157, 222, 57);
+}
+
+.separador-psiquico {
+    background: #F92377;
+}
+
+.separador-agua {
+    background: rgb(61, 133, 238);
+}
+
+.separador-dragon {
+    background: rgb(7, 45, 94);
+}
+
+.separador-voador {
+    background: rgb(120, 143, 147);
+}
+
+.separador-solo {
+    background: rgb(168, 85, 47);
+}
+
+.separador-pedra {
+    background: rgb(106, 21, 21);
+}
+
+.separador-gelo {
+    background: rgb(203, 245, 255);
+}
+
+.separador-lutador {
+    background: rgb(227, 19, 19);
+}
+
+.separador-normal {
+    background: rgb(151, 99, 99);
+}
+
+.body-fantasma {
+    width: 100%;
+    height: 1000px;
+    margin: 0;
+    left: 0;
+    right: 0;
+}
+
+#top, #bottom, #left, #right {
+    background: rebeccapurple;
+    position: fixed;
+}
+
+#top, #bottom {
+    background: rebeccapurple;
+    position: absolute;
+}
+
+#left, #right {
+    top: 0;
+    bottom: 0;
+    width: 7px;
+}
+
+#left {
+    left: -4px;
+    position: relative;
+}
+
+#right {
+    right: 0;
+}
+
+#top, #bottom {
+    left: 0;
+    right: 0;
+    height: 7px;
+}
+
+#top {
+    top: 0;
+}
+
+#bottom {
+    bottom: 0;
+}
+/*---------------------------------------plano-efeito-------------------------------*/
+
+.plano-efeito {
+    position: absolute;
+    background-color: black;
+    width: 101%;
+    height: 588px;
+    border-bottom-left-radius: 100%;
+    border-bottom-right-radius: 100%;
+    border: 0px solid;
+    top: -24px;
+    left: -1px;
+    z-index:-1
+}
+
+.plano-efeito-dtls {
+    position: absolute;
+    background-color: black;
+    width: 85%;
+    height: 588px;
+    border-bottom-left-radius: 100%;
+    border-bottom-right-radius: 100%;
+    border: 0px solid;
+    top: 6.32%;
+    left: 14.7%;
+}
+
+.plano-efeito-fantasma {
+    background-color: rebeccapurple;
+}
+
+.plano-efeito-fogo {
+    background-color: rgb(204, 39, 39);
+}
+
+.plano-efeito-eletrico {
+    background: #f6c23e;
+}
+
+.plano-efeito-sombrio {
+    background: rgb(48, 41, 54);
+}
+
+.plano-efeito-venenoso {
+    background: rgb(153, 51, 148);
+}
+
+.plano-efeito-planta {
+    background: rgb(0, 191, 114);
+}
+
+.plano-efeito-inseto {
+    background: rgb(157, 222, 57);
+}
+
+.plano-efeito-psiquico {
+    background: #F92377;
+}
+
+.plano-efeito-agua {
+    background: rgb(61, 133, 238);
+}
+
+.plano-efeito-dragon {
+    background: rgb(7, 45, 94);
+}
+
+.plano-efeito-voador {
+    background: rgb(120, 143, 147);
+}
+
+.plano-efeito-solo {
+    background: rgb(168, 85, 47);
+}
+
+.plano-efeito-pedra {
+    background: rgb(106, 21, 21);
+}
+
+.plano-efeito-gelo {
+    background: rgb(203, 245, 255);
+}
+
+.plano-efeito-lutador {
+    background: rgb(227, 19, 19);
+}
+
+.plano-efeito-normal {
+    background: rgb(151, 99, 99);
+}
+
+/*---------------------------------------Versões-------------------------------*/
+
+[lj-type="stage"] {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    position: relative;
+    color: aqua;
+}
+
+@media (min-width: 1920px) {
+    #content-layer {
+        position: absolute;
+        margin-left: 50px;
+    }
+}
+
+@media(min-width: 1536px) {
+    #content-layer {
+        height: 500px;
+        width: 600px;
+        margin-left: 32%;
+    }
+}
+
+#content-layer {
+    height: 500px;
+    width: 600px;
+    margin-left: 32%;
+}
+
+#default, #mega {
+    padding-top: 90px;
+    height: 500px;
+}
+
+.fbtn {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    top: -20px;
+    left: -16.8px;
+    padding-top: 5px;
+}
+
+#btns {
+    position: relative;
+    left: 100px;
+    width: 500px;
+    height: 80px;
+    top: -20px;
+}
+
+.dropbtn {
+    position: absolute;
+    top: 25px;
+    left: 48%;
+    border: 1px solid rgb(255, 255, 255);
+    border-radius: 50px;
+    width: 46px;
+    height: 46px;
+    transition: 0.2s;
+}
+
+
+
+.fwbts {
+    opacity: 0;
+    position: absolute;
+    height: 50px;
+    z-index: 1;
+    left: 44%;
+    top: -20px;
+    transition: 0.2s;
+    visibility: hidden;
+}
+
+.fbtns {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    top: -15px;
+    transition: 0.1s;
+    cursor:pointer;
+}
+
+
+.dropdown:hover .fwbts {
+    display: block;
+    border-radius: 50px;
+    background-color: aliceblue;
+    transition: 0.2s;
+    opacity: 100;
+    visibility: visible;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: aliceblue;
+    border: 1px solid aliceblue;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+}
+
+/*---------------------------------------titulo-------------------------------*/
+
+.titulo {
+    position: relative;
+    top: 400px;
+    left: 45%;
+    font-size: 50px;
+    font-family: pokemon;
+    color: rgb(0, 0, 0);
+    text-align:center;
+}
+
+.sidebar-pokemon {
+    background-Image: linear-gradient(180deg, rgb(243, 72, 72) 10%, rgb(153, 51, 51) 100%);
+}
+
+/*---------------------------------------Tipos & tipos-------------------------------*/
+.tipo-pg {
+    position: relative;
+    /*background-color: rgb(194, 194, 194);
+    color: rgb(0, 0, 0);*/
+    padding-left: 1%;
+    padding-right: 1%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 5px;
+    width: 115px;
+    height: 30px;
+    transition: 0.2s;
+    font-size: 16.5px;
+    text-align: center;
+}
+
+.tipo1-pg {
+    top: 400px;
+    left: 300px;
+}
+
+.tipo2-pg {
+    top: 360px;
+    left: 750px;
+}
+
+.tipo3-pg {
+    top: 400px;
+    left: 600px;
+}
+
+@media(min-width: 1536px) {
+    .tipo1-pg {
+        top: 400px;
+        left: 350px;
+    }
+
+    .tipo2-pg {
+        top: 360px;
+        left: 800px;
+    }
+
+    .tipo3-pg {
+        top: 400px;
+        left: 600px;
+    }
+}
+/*---------------------------------------Numero da Pokedéx PG-------------------------------*/
+
+@media (min-width: 1400px) {
+    .num-pg {
+        position: relative;
+        margin-left: 50px;
+    }
+}
+
+.num-pg {
+    position: relative;
+    font-size: 40px;
+    bottom: -350px;
+    left: 525px;
+    color: rgb(129, 139, 145);
+    transition: 0.2s;
+    width: 150px;
+}
+
+    .num-pg:hover {
+        transform: scale(1.03);
+    }
+
+/*---------------------------------------Caracteristicas-------------------------------*/
+.carac {
+    position: relative;
+    top: 400px;
+    height: 150px;
+    display: inline-flex;
+    width: 100%;
+    padding-left: 20%;
+}
+
+.sp {
+    width: 150px;
+    padding-left: 3.5%;
+    margin-left: 50px;
+}
+
+.spPergunta {
+    font-size: 14.5px;
+    padding-left: 5px;
+    color: rgb(129, 139, 145);
+}
+
+.spResposta{
+    font-size:20px;
+}
+.sp-fantasma {
+    color: rebeccapurple !important;
+}
+.sp-fogo {
+    color: rgb(204, 39, 39) !important;
+}
+
+.sp-eletrico {
+    color: #f6c23e !important;
+}
+
+.sp-sombrio {
+    color: rgb(48, 41, 54) !important;
+}
+
+.sp-venenoso {
+    color: rgb(153, 51, 148) !important;
+}
+
+.sp-planta {
+    color: rgb(0, 191, 114) !important;
+}
+
+.sp-inseto {
+    color: rgb(157, 222, 57) !important;
+}
+
+.sp-psiquico {
+    color: #F92377 !important;
+}
+
+.sp-agua {
+    color: rgb(61, 133, 238) !important;
+}
+
+.sp-dragon {
+    color: rgb(7, 45, 94) !important;
+}
+
+.sp-voador {
+    color: rgb(120, 143, 147) !important;
+}
+
+.sp-solo {
+    color: rgb(168, 85, 47) !important;
+}
+
+.sp-pedra {
+    color: rgb(106, 21, 21) !important;
+}
+
+.sp-gelo {
+    color: rgb(203, 245, 255) !important;
+}
+
+.sp-lutador {
+    color: rgb(227, 19, 19) !important;
+}
+
+.sp-normal {
+    color: rgb(151, 99, 99) !important;
+}
+
+/*----------------------------------------------------------*/ /*------------------------------------------------------------------------*/
+/*------------------------------------------------------Painel-Create--------------------------------------------------------------------*/
+/*----------------------------------------------------------*/ /*------------------------------------------------------------------------*/
+
+.fotos-div {
+    width: 100%;
+    height: 300px;
+    overflow: visible;
+    position: relative;
+    display: inline-flex;
+    padding-left: 15%;
+}
+
+#foto-enter {
+    margin-right: 50px;
+}
+
+.foto-form {
+    width: 250px;
+    height: 100px;
+    background-color: white;
+    word-break: break-word;
+}
+
+.foto-icon {
+    margin-left: 80px;
+}
+
+/*---------------------------------------titulo crt-------------------------------*/
+
+.titulo-crt {
+    position: relative;
+    top: 100px;
+    left: 25%;
+    font-size: 40px;
+    color: rgb(0, 0, 0);
+    border-radius: 5px;
+    text-align:center;
+}
+
+/*---------------------------------------Tipos & tipos crt-------------------------------*/
+
+.tipo-crt {
+    position: relative;
+    /*background-color: rgb(194, 194, 194);
+    color: rgb(0, 0, 0);*/
+    padding-left: 1%;
+    padding-right: 1%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 5px;
+    width: 115px;
+    height: 30px;
+    transition: 0.2s;
+    font-size: 16.5px;
+    text-align: center;
+    z-index: 3;
+}
+
+.tipo1-crt {
+    top: -200px;
+    left: 300px;
+}
+
+.tipo2-crt {
+    top: 160px;
+    left: 750px;
+}
+
+.tipo3-crt {
+    top: 200px;
+    left: 600px;
+}
+
+@media(min-width: 1536px) {
+    .tipo1-crt {
+        top: 260px;
+        left: -90px;
+    }
+
+    .tipo2-crt {
+        top: 260px;
+        left: 200px;
+    }
+
+    .tipo3-crt {
+        top: 400px;
+        left: 600px;
+    }
+}
+/*---------------------------------------opções tipos crt-------------------------------*/
+.tipo-options {
+    position: absolute;
+}
+
+/*---------------------------------------Numero da Pokedéx crt-------------------------------*/
+
+@media (min-width: 1400px) {
+    .num-crt {
+        position: relative;
+        margin-left: -670px;
+    }
+}
+
+.num-crt {
+    position: relative;
+    font-size: 30px;
+    bottom: -320px;
+    left: 525px;
+    color: rgb(129, 139, 145);
+    transition: 0.2s;
+    width: 100px;
+    text-align: center;
+}
+
+    .num-crt:hover {
+        transform: scale(1.03);
+    }
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button,
+form::-webkit-outer-spin-button,
+form::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/*---------------------------------------Caracteristicas crt-------------------------------*/
+
+.spResposta-crt {
+    font-size: 12.5px;
+    margin-left: -20px;
+    text-align: center;
+    width: 100px;
+}
+
+/*---------------------------------------Descrição crt-------------------------------*/
+.description-area {
+    position: relative;
+    width: 80%;
+    height: 200px;
+    top: 400px;
+    left: 10%;
+}
+
+.description-crt {
+    width: 95%;
+    height: 200px;
+    margin-left: 2.5%;
+    border: 2px solid black;
+    border-radius: 5px;
+    word-wrap: break-word;
+    text-align: start;
+    border: 1px solid black;
+}
+
+/*---------------------------------------Informações de batalha crt-------------------------------*/
+/*-----------Informaçõe da Chart-------------------*/
+.battle-info-area {
+    position: relative;
+    width: 80%;
+    height: 400px;
+    top: 500px;
+    left: 10%;
+    display: inline-flex;
+}
+
+.base-input {
+    width: 40px;
+}
+
+.base-info-area {
+    text-align: right;
+}
+
+/*-----------Movimento-------------------*/
+.move-title {
+    position: relative;
+    left: 50%;
+}
+
+.move-area {
+    top: 6%;
+    border: 3px solid #ff0049;
+    border-radius: 10px;
+    position: relative;
+    left: 20%;
+    width: 600px;
+    height: 400px;
+    display: inline-flex;
+    padding-top: 5%;
+    padding-left: 7%;
+}
+
+.move-baixo {
+    position: relative;
+    top: 60px;
+    left: -400px;
+}
+
+.move-input {
+    border: none;
+    border-left: 1px solid black;
+    margin-left: 5px;
+}
+
+/*----------------------------------------------------------*/ /*------------------------------------------------------------------------*/
+/*------------------------------------------------------Painel-Detalhes--------------------------------------------------------------------*/
+/*----------------------------------------------------------*/ /*------------------------------------------------------------------------*/
+
+#details input[type="text"] {
+    border: 0px solid transparent;
+    background-color: transparent;
+    outline: none;
+}
+
+#details input[type="number"] {
+    border: 0px solid transparent;
+    background-color: transparent;
+}
+
+/*----------------Menu Flutuante---------------------*/
+.botoes {
+    top: 300px;
+    left: 20%;
+    position: relative;
+    padding-bottom: 30px;
+}
+
+.menu-float {
+    position: fixed;
+    top: 150px;
+    right: 30px;
+    text-align: right;
+    visibility: hidden;
+    transition: 0.2s;
+}
+
+.abrir-menu {
+    width: 80px;
+    height: 49px;
+    background-color: rgb(204, 39, 39);
+    cursor: pointer;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    visibility: visible;
+    border-radius: 5px;
+}
+
+.menu-float:hover {
+    visibility: visible;
+}
+
+/*elminar*/
+.iemr {
+    margin-right: 94px;
+    margin-bottom:-123px;
+}
+
+.eliminar {
+    visibility: hidden;
+    width: 0px;
+    transition: 0.2s;
+}
+
+.iemr:hover .eliminar {
+    visibility: visible;
+    width: 100px;
+}
+
+/*--------------------------------------------salvar*/
+.islvr {
+    margin-right: 94px;
+    margin-bottom: -80px;
+}
+
+.salvar {
+    visibility: hidden;
+    width: 0px;
+    transition: 0.2s;
+}
+
+.islvr:hover .salvar {
+    visibility: visible;
+    width: 100px;
+}
+
+/*----------------------------------------------------------cancelar*/
+.iclr{
+    margin-bottom:-90px;
+}
+
+.cancelar {
+    visibility: hidden;
+    width: 0px;
+    transition: 0.2s;
+}
+
+.iclr:hover .cancelar {
+    visibility: visible;
+    width: 100px;
+}
+
+/*--------------------------------------------------------------editar*/
+.iedt {
+    margin-right: 94px;
+}
+
+.editar {
+    visibility: hidden;
+    width: 0px;
+    transition: 0.2s;
+}
+
+.iedt:hover .editar {
+    visibility: visible;
+    width: 100px;
+}
+
+/*---------------------------------------------------------------voltar*/
+.voltar {
+    visibility: hidden;
+    width: 0px;
+    transition: 0.2s;
+}
+
+.ivlt:hover .voltar {
+    visibility: visible;
+    width: 100px;
+}
+
+
+/*---------------------------------------Numero da pokedex-------------------------------*/
+.num-dtls {
+    text-align: center;
+    width: 10px;
+    top: 40px;
+    display: inline;
+    position: relative;
+    font-size: 40px;
+    left: 350px;
+    color: rgb(129, 139, 145);
+    transition: 0.2s;
+}
+
+.num-size{
+    width:50px
+}
+
+.disk-icon {
+    width: 20px;
+    height: 20px;
+}
+
+/*---------------------------------------Fotos Dtls-------------------------------*/
+.layer-bts-detalhes{
+   position:absolute;
+   top:-500px;
+}
+
+.shiny-img, .mega-img {
+    visibility: hidden;
+    z-index: 9;
+}
+.default-img {
+    position:relative;
+    z-index: 9;
+    top:100px;
+    left:500px
+}
+
+img-dtls {
+    position: relative;
+    z-index: 9;
+    top: 100px;
+    left: 500px
+}
+
+.dropbtn-dtls{
+    top:-420px;
+}
+
+.fwbts-dtls {
+    top: -466px;
+    left: 525px;
+}
+
+.foto-painel{
+    max-width:436px;
+    max-height:450px;
+}
+/*---------------------------------------Nome Detalhes-------------------------------*/
+.titulo-dtls{
+    position:relative;
+    top:-450px;
+    left:-560px;
+    text-align:center;
+    height:100px;
+}
+/*---------------------------------------Tipos Detalhes-------------------------------*/
+.tipo1-dtls {
+    top: 0px;
+    left: 350px;
+}
+
+.tipo2-dtls {
+    top: 0px;
+    left: 700px;
+}
+/*---------------------------------------Caracteristicas Detalhes-------------------------------*/
+.carac-dtls {
+    position: relative;
+    top: 100px;
+    height: 150px;
+    display: inline-flex;
+    width: 100%;
+    padding-left: 20%;
+}
+
+.description-area-dtls {
+    position: relative;
+    width: 80%;
+    height: 200px;
+    top: 150px;
+    left: 10%;
+}
+
+.base-info-area-dtls {
+    visibility: hidden;
+}
+
+.status-batalha{
+    top:300px;
+}
+
+.move-area-dtls {
+    top: -134%;
+    border: 3px solid #E7005B;
+    border-radius: 10px;
+    position: relative;
+    left: 14%;
+    width: 600px;
+    height: 300px;
+    display: inline-flex;
+    padding-top: 5%;
+    padding-left: 7%;
+}
+
+.efetividade-area-dtls {
+    top: -134%;
+    border: 3px solid #0086F3;
+    border-radius: 10px;
+    position: absolute;
+    left: 52.84%;
+    width: 600px;
+    height: 300px;
+    display: inline-flex;
+    padding-top: 5%;
+    padding-left: 7%;
+    background-color: aliceblue;
+    visibility:hidden;
+}
+
+.move-title-dtls {
+    top: -570px;
+    left: 50%;
+    color: #E7005B;
+    cursor:pointer;
+}
+.titu-separador {
+    position: relative;
+    left: 50%;
+    top: -570px;
+    cursor: default;
+}
+.efetividade-title {
+    position: relative;
+    left: 50%;
+    top: -570px;
+    cursor: pointer;
+}
+
+.foto-painel-edit {
+    width: 250px;
+    height: 229px;
+    position:absolute;
+    left:251px;
+    top:24px;
+    z-index:-1;
+}
