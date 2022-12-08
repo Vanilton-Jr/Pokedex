@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Pokemon.Data;
 
@@ -11,9 +12,10 @@ using Pokemon.Data;
 namespace Pokemon.Migrations
 {
     [DbContext(typeof(AppC))]
-    partial class AppCModelSnapshot : ModelSnapshot
+    [Migration("20221208200908_initial-2")]
+    partial class initial2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
